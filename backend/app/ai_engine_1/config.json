@@ -1,0 +1,231 @@
+{
+  "version": "3.0",
+  "description": "SAATHI-AI Engine 1 Multilingual 21-Category Taxonomy with Negation & ML Integration (Hindi, Hinglish, English)",
+  "svi_config": {
+    "decay_rate": 0.75,
+    "calming_reduction_factor": 0.50,
+    "max_single_chunk_contribution": 65,
+    "smoothing_alpha": 0.65,
+    "baseline_decay_per_chunk": 2.0,
+    "note": "Decision-support SVI prioritization scale (0-100). Human operator oversight mandatory."
+  },
+  "negation_words": [
+    "nahi", "nahin", "nhi", "no", "not", "dont", "don't", "doesnt", "doesn't", "wont", "won't",
+    "never", "na", "mat", "without", "koi nahi", "bilkul nahi", "kuch nahi", "नहीं", "नही", "मत"
+  ],
+  "meta_context_words": [
+    "movie", "film", "serial", "drama", "news", "awareness", "program", "game", "playing",
+    "joke", "joking", "hass hass ke", "mar hi gayi", "mar hi gaya", "कहानी", "फिल्म", "नाटक"
+  ],
+  "indicator_categories": {
+    "THREAT_INTIMIDATION": {
+      "ui_label": "Threat / Intimidation",
+      "weight": 38,
+      "phrases": [
+        "धमकी", "धमकी दे रहा", "धमकी मिल रही", "धमकी दी", "मार देंगे", "मार देगा", "मार दूंगा", "मारूंगी", "जान से मार", "देख लूंगा", "खत्म कर दूंगा",
+        "dhamki", "dhamki mil rahi", "dhamki de raha", "dhamki di", "maar denge", "marunga", "marungi", "dekh lunga", "jaan se maarne",
+        "jaan se maar", "jaan se maar dunga", "khatam kar dunga", "dara raha", "warning di hai", "consequences bahut bure", "sabak sikha",
+        "threat", "threaten", "threatened", "threatening", "will kill me", "said he will kill", "will hurt me", "going to kill",
+        "threatened me", "threatened my family", "threatening call", "threatening message", "harm me", "regret it", "sent someone to threaten"
+      ]
+    },
+    "FEAR_DISTRESS_PANIC": {
+      "ui_label": "Fear / Distress",
+      "weight": 34,
+      "phrases": [
+        "डर", "डर लग रहा", "बहुत डर", "घबराहट", "घबरा", "चीख", "पैनिक", "कांप रहा", "परेशान", "रो रहा", "चीखना",
+        "darr", "dar raha", "dar rahi", "bahut darr", "bohot darr", "dar lag raha", "darr lag raha", "ghabra", "ghabrahat", "pareshan",
+        "scared", "afraid", "terrified", "petrified", "panic", "panicking", "extremely scared", "frightened", "anxious", "anxiety",
+        "shaking", "trembling", "overwhelmed", "helpless", "cannot calm down", "dont feel safe", "feel helpless"
+      ]
+    },
+    "IMMEDIATE_PHYSICAL_DANGER": {
+      "ui_label": "Immediate Safety / Urgency",
+      "weight": 45,
+      "phrases": [
+        "बाहर है", "घर के बाहर", "दरवाजे के बाहर", "अंदर आ गया", "अंदर घुस गया", "अभी मेरे पास", "दरवाजे पर", "हथियार",
+        "bahar hai", "ghar ke bahar", "darwaze ke bahar", "aane wala hai", "aa raha hai", "andar aa gaya", "ghus aaya", "locked hoon",
+        "right now", "outside my house", "outside my door", "near my house", "at my doorstep", "immediate danger", "coming right now",
+        "he has a weapon", "attacking me right now", "situation dangerous", "someone is outside", "send police immediately"
+      ]
+    },
+    "SELF_HARM_CONCERN": {
+      "ui_label": "Self-Harm Risk",
+      "weight": 50,
+      "phrases": [
+        "अपने आप को नुकसान", "खुद को नुकसान", "मर जाना चाहती", "मर जाना चाहता", "जीना नहीं चाहती", "जीना नहीं चाहता", "जान लेना",
+        "nuksan pahunchana", "mar jana chahiye", "jeena nahi chahti", "jeena nahi chahta", "mar jana chahta", "marna chahti", "apni jaan",
+        "want to hurt myself", "don't want to live", "dont want to live", "want to kill myself", "want to die", "end my life", "no reason to live"
+      ]
+    },
+    "PHYSICAL_VIOLENCE_INJURY": {
+      "ui_label": "Physical Violence",
+      "weight": 40,
+      "phrases": [
+        "मारा", "पीट रहा", "पीटा", "हमला किया", "खून निकल रहा", "चोट लगी", "घायल हूं", "चांटा", "धक्का दिया",
+        "maara", "usne mujhe maara", "peeta", "beat me", "hit me", "attacked me", "bleeding", "injured", "physically attacked",
+        "khoon aa raha", "chot lagi", "slapped me", "kicked me", "punched me", "body par injury"
+      ]
+    },
+    "SEXUAL_VIOLENCE_HARASSMENT": {
+      "ui_label": "Sexual Harassment / Violence",
+      "weight": 45,
+      "phrases": [
+        "छेड़छाड़", "गलत तरीके से छुआ", "जबरदस्ती", "यौन उत्पीड़न", "गलत टच",
+        "chedchad", "ched chad", "galat tarike se chhua", "jabarjasti", "harassment", "sexual harassment",
+        "inappropriate touch", "inappropriate touching", "forced me", "assaulted", "forced himself on me", "unwanted calls"
+      ]
+    },
+    "DOMESTIC_FAMILY_VIOLENCE": {
+      "ui_label": "Domestic Violence",
+      "weight": 36,
+      "phrases": [
+        "पति", "सास", "ससुराल", "घरवाले", "पति मारता", "पति प्रताड़ित",
+        "husband", "in-laws", "family hurting me", "ghar wale", "husband beats me", "saas hurt", "father threatens",
+        "domestic violence", "partner abuse", "family threatening me", "abused at home"
+      ]
+    },
+    "STALKING_FOLLOWING": {
+      "ui_label": "Stalking / Following",
+      "weight": 32,
+      "phrases": [
+        "पीछा कर रहा", "रोज आता है", "ट्रैक कर रहा", "बार बार कॉल",
+        "peecha kar raha", "following me", "stalking me", "keeps following me", "tracking me", "roz ghar ke bahar",
+        "watching my house", "continuously track", "keeps calling me"
+      ]
+    },
+    "ISOLATION_NO_SUPPORT": {
+      "ui_label": "Isolation Signal",
+      "weight": 28,
+      "phrases": [
+        "अकेला", "अकेली", "कोई नहीं है", "मदद करने वाला कोई नहीं", "कोई सहारा नहीं",
+        "akela", "akeli", "alone", "bilkul akela", "bilkul akeli", "koi nahi", "ghar mein koi nahi",
+        "nobody with me", "no one to help me", "completely alone", "have nobody", "nowhere to go"
+      ]
+    },
+    "COERCION_BLACKMAIL": {
+      "ui_label": "Coercion / Blackmail",
+      "weight": 35,
+      "phrases": [
+        "ब्लैकमेल", "धमका रहा है", "मजबूर कर रहा है", "फोटो लीक", "मैसेज लीक",
+        "blackmail", "blackmailing me", "forcing me", "being forced", "majboor kar raha", "photos leak", "messages leak"
+      ]
+    },
+    "SOCIAL_COMMUNITY_PRESSURE": {
+      "ui_label": "Social / Group Pressure",
+      "weight": 25,
+      "phrases": [
+        "समाज", "पंचायत", "मोहल्ला", "बहिष्कार", "सामूहिक दबाव",
+        "samaj", "mohalla", "social retaliation", "group threat", "community pressure", "public humiliation"
+      ]
+    },
+    "DISCRIMINATION_CASTE_VULNERABILITY": {
+      "ui_label": "Caste / Discrimination",
+      "weight": 30,
+      "phrases": [
+        "जातिसूचक", "भेदभाव", "दलित", "निचली जाति",
+        "casteist", "caste discrimination", "jaati", "untouchability", "social discrimination"
+      ]
+    },
+    "CHILD_ELDERLY_DISABILITY_VULNERABILITY": {
+      "ui_label": "Child / Elderly / Disability",
+      "weight": 32,
+      "phrases": [
+        "बच्चा", "बुजुर्ग", "दिव्यांग", "गर्भवती",
+        "minor", "elderly", "disabled", "disability", "pregnant", "special child"
+      ]
+    },
+    "NO_SAFE_PLACE_HOMELESSNESS": {
+      "ui_label": "No Safe Place / Homelessness",
+      "weight": 30,
+      "phrases": [
+        "घर से निकाल दिया", "सड़क पर", "कोई ठिकाना नहीं", "बेघर", "शेल्टर होम",
+        "thrown out of house", "homeless", "no shelter", "stranded on road", "nowhere to go"
+      ]
+    },
+    "MEDICAL_EMERGENCY": {
+      "ui_label": "Medical Emergency",
+      "weight": 42,
+      "phrases": [
+        "सांस नहीं आ रही", "बहुत खून", "बेहोश", "चोट लगी है", "छाती में दर्द",
+        "cannot breathe", "cant breathe", "heavy bleeding", "badly injured", "unconscious", "chot lagi hai", "chest pain", "ambulance"
+      ]
+    },
+    "CURRENT_SAFETY_REASSURANCE": {
+      "ui_label": "Current Safety Reassurance",
+      "weight": -35,
+      "phrases": [
+        "सुरक्षित हूं", "अभी safe हूं", "safe हूं", "पुलिस आ गई", "चला गया", "कोई खतरा नहीं", "situatuon normal",
+        "safe hoon", "ab safe hoon", "abhi safe hoon", "police aa gayi", "chala gaya", "no danger now",
+        "i am safe now", "everything is okay", "he left", "out of danger", "police has arrived", "currently safe"
+      ]
+    },
+    "REQUEST_POLICE_EMERGENCY_HELP": {
+      "ui_label": "Request Police Emergency",
+      "weight": 25,
+      "phrases": [
+        "पुलिस भेजो", "पुलिस को बुलाओ", "पीसीआर वैन", "112 को अलर्ट",
+        "police bhejo", "send police", "dispatch police", "pcr van", "urgent police"
+      ]
+    },
+    "REQUEST_COUNSELLING_LEGAL_MEDICAL": {
+      "ui_label": "Request Counselling / Legal",
+      "weight": 12,
+      "phrases": [
+        "कानूनी सलाह", "वकील", "काउंसलर", "थेरेपिस्ट",
+        "legal advice", "lawyer", "counselling", "therapist", "legal aid"
+      ]
+    },
+    "UNCERTAINTY_UNCLEAR_INFO": {
+      "ui_label": "Uncertainty / Unclear Info",
+      "weight": 10,
+      "phrases": [
+        "याद नहीं आ रहा", "पता नहीं", "कन्फ्यूज", "land mark nahi",
+        "not sure", "confused", "cannot recall", "unclear", "uncertain"
+      ]
+    },
+    "CONTRADICTORY_CHANGING_SITUATION": {
+      "ui_label": "Contradictory / Changing Situation",
+      "weight": 22,
+      "phrases": [
+        "पहले लगा", "अचानक फिर", "बदल रही है",
+        "first he said", "suddenly started again", "unpredictable", "contradicting"
+      ]
+    },
+    "NEUTRAL_NO_INDICATOR": {
+      "ui_label": "Neutral / No Indicator",
+      "weight": 0,
+      "phrases": [
+        "फिल्म", "नाटक", "जागरूकता", "समय जानने के लिए",
+        "action movie", "awareness program", "inquire timings", "just checking"
+      ]
+    }
+  },
+  "speech_pace_config": {
+    "ui_label": "Speech pace",
+    "slow_wpm_threshold": 60,
+    "normal_wpm_upper": 160,
+    "fast_wpm_threshold": 220,
+    "slow_distress_weight": 15,
+    "fast_panic_weight": 22,
+    "normal_contribution": 0
+  },
+  "copilot_rules": {
+    "LOW": {
+      "suggested_question": "Namaste, ERSS Control Room. Kripya mujhe apni situation ke baare mein bataiye. Aap kahan hain?",
+      "communication_tip": "Maintain a calm, reassuring tone. Establish caller location and immediate safety status."
+    },
+    "MODERATE": {
+      "suggested_question": "Kya aap mujhe bata sakte hain ki aapke aas-paas koi hai, ya aap akele hain?",
+      "communication_tip": "Confirm caller's current location and verify if immediate assistance is requested."
+    },
+    "HIGH": {
+      "suggested_question": "Kya aap abhi kisi surakshit jagah par ja sakte hain — andar ka kamra, ya kisi padosi ke paas?",
+      "communication_tip": "Prioritize immediate safety. Keep caller engaged while preparing dispatch protocol."
+    },
+    "CRITICAL": {
+      "suggested_question": "Emergency team notified. Kripya darwaza andar se band karein aur phone par bane rahein.",
+      "communication_tip": "CRITICAL URGENCY: Confirm exact location landmark. Maintain continuous line."
+    }
+  }
+}

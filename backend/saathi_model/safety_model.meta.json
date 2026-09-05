@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "threshold": 0.5,
+  "label_map": {
+    "1": "safety_threat",
+    "0": "safe"
+  },
+  "metrics": {
+    "cv_f1_mean": 0.9016524216524215,
+    "cv_f1_std": 0.056067449555729336,
+    "cv_acc_mean": 0.8940170940170941,
+    "cv_acc_std": 0.0630048461332722,
+    "folds": 5,
+    "train_f1_threat": 1.0
+  }
+}

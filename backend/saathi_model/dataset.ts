@@ -1,0 +1,171 @@
+// Curated safety training corpus for the Saathi AI safety classifier.
+// Labels: 1 = safety_threat (immediate physical danger / self-harm / weapon / attack),
+//         0 = safe (general distress, harassment discussion, mental health, etc.)
+// Language mix: English, Hinglish (Roman-script Hindi), Hindi (Devanagari).
+// This dataset is intentionally rich across all three so the TF-IDF model
+// generalizes to Hinglish code-mixed inputs seen in production.
+
+export interface SafetyExample {
+  text: string
+  label: 0 | 1
+  lang: 'en' | 'hinglish' | 'hi'
+}
+
+export const SAFETY_TRAINING_DATA: SafetyExample[] = [
+  // ===== SAFETY THREAT — English =====
+  { text: 'I want to kill myself tonight, I have a plan.', label: 1, lang: 'en' },
+  { text: 'He is going to murder me tomorrow, I am scared for my life.', label: 1, lang: 'en' },
+  { text: 'They brought a weapon to my house and threatened to attack.', label: 1, lang: 'en' },
+  { text: 'There is a bomb threat in our colony, people are panicking.', label: 1, lang: 'en' },
+  { text: 'I saw blood on the floor and someone is lying there unconscious.', label: 1, lang: 'en' },
+  { text: 'I am going to die, no one can save me now.', label: 1, lang: 'en' },
+  { text: 'My husband said he will kill me if I file a complaint.', label: 1, lang: 'en' },
+  { text: 'A mob has surrounded my village, they are burning houses.', label: 1, lang: 'en' },
+  { text: 'Someone is holding a knife and chasing me right now.', label: 1, lang: 'en' },
+  { text: 'There are gunshots outside and I am hiding under the bed.', label: 1, lang: 'en' },
+  { text: 'He threatened to burn my house down tonight.', label: 1, lang: 'en' },
+  { text: 'I want to end my life, nobody cares about me.', label: 1, lang: 'en' },
+  { text: 'They have looted and set our village on fire.', label: 1, lang: 'en' },
+  { text: 'My life is in danger, the goons are outside my gate.', label: 1, lang: 'en' },
+  { text: 'A man with a sword just entered my shop and threatened my staff.', label: 1, lang: 'en' },
+  { text: 'I have a rope and I am going to hang myself tonight.', label: 1, lang: 'en' },
+  { text: 'They are going to lynch him, please send police now.', label: 1, lang: 'en' },
+  { text: 'Acid attack — someone just threw acid on my sister.', label: 1, lang: 'en' },
+  { text: 'I am bleeding heavily after being stabbed.', label: 1, lang: 'en' },
+  { text: 'They kidnapped my daughter and are demanding ransom.', label: 1, lang: 'en' },
+  { text: 'A group of men is beating my father right now.', label: 1, lang: 'en' },
+  { text: 'Please help, I am being attacked at home.', label: 1, lang: 'en' },
+  { text: 'He has a pistol and is threatening to shoot.', label: 1, lang: 'en' },
+  { text: 'My neighbour is being assaulted, send help immediately.', label: 1, lang: 'en' },
+
+  // ===== SAFETY THREAT — Hinglish =====
+  { text: 'Mere ghar pe hathiyar lekar aaye hain, mujhe maarna chahte hain.', label: 1, lang: 'hinglish' },
+  { text: 'Main aaj raat apni jaan khatam kar dunga.', label: 1, lang: 'hinglish' },
+  { text: 'Woh log mere gaon mein aag laga rahe hain, bachao.', label: 1, lang: 'hinglish' },
+  { text: 'Mere pati ne dhamki di hai ki mujhe maar dega.', label: 1, lang: 'hinglish' },
+  { text: 'Meri beti ko kidnap kar liya hai, please madad karo.', label: 1, lang: 'hinglish' },
+  { text: 'Bahut khoon beh raha hai, koi hospital bulao jaldi.', label: 1, lang: 'hinglish' },
+  { text: 'Chaku lekar mere peeche aaya hai, darwaaza khol do.', label: 1, lang: 'hinglish' },
+  { text: 'Mob ne hamare ghar par hamla kar diya.', label: 1, lang: 'hinglish' },
+  { text: 'Mujhe aaj raat koi maar dalega, mujhe yakeen hai.', label: 1, lang: 'hinglish' },
+  { text: 'Bomb blast ho gaya market mein, log mare hain.', label: 1, lang: 'hinglish' },
+  { text: 'Goli chal rahi hai mohalle mein, please police bulao.', label: 1, lang: 'hinglish' },
+  { text: 'Mere bete ko peet peet kar maar diya unhone.', label: 1, lang: 'hinglish' },
+  { text: 'Woh aadmi mere ghar ke bahar khada hai aur jaan se maarne ki dhamki de raha hai.', label: 1, lang: 'hinglish' },
+  { text: 'Main apni jaan le lunga, koi fayda nahi hai.', label: 1, lang: 'hinglish' },
+  { text: 'Hamare gaon mein danga ho gaya hai, log jala rahe hain.', label: 1, lang: 'hinglish' },
+  { text: 'Acid phenk diya usne meri behen ke muh par.', label: 1, lang: 'hinglish' },
+  { text: 'Mujhe abhi maarna shuru kar diya unhone.', label: 1, lang: 'hinglish' },
+  { text: 'Mujhe latak kar mar dunga, sab khatam kar dunga.', label: 1, lang: 'hinglish' },
+  { text: 'Rassi lekar main aaj suicide karunga.', label: 1, lang: 'hinglish' },
+  { text: 'Woh hathiyar dikha raha hai aur dhamki de raha hai.', label: 1, lang: 'hinglish' },
+  { text: 'Mere mohalle mein firing ho rahi hai abhi.', label: 1, lang: 'hinglish' },
+  { text: 'Log mere ghar mein ghus aaye aur loot rahe hain.', label: 1, lang: 'hinglish' },
+  { text: 'Meri behen ko kisi ne chaku maara, khoon beh raha hai.', label: 1, lang: 'hinglish' },
+  { text: 'Woh log humein jalaa denge, please bachao.', label: 1, lang: 'hinglish' },
+
+  // ===== SAFETY THREAT — Hindi (Devanagari) =====
+  { text: 'मेरे घर में हथियार लेकर आए हैं और मुझे मारने की धमकी दे रहे हैं।', label: 1, lang: 'hi' },
+  { text: 'मैं आज रात अपनी जान दे दूँगा, किसी को फर्क नहीं पड़ता।', label: 1, lang: 'hi' },
+  { text: 'हमारे गाँव में भीड़ ने हमला कर दिया है, घर जला दिए।', label: 1, lang: 'hi' },
+  { text: 'मेरे पति ने कहा है कि वो मुझे मार देगा।', label: 1, lang: 'hi' },
+  { text: 'बम धमाका हुआ है बाज़ार में, बहुत लोग मारे गए।', label: 1, lang: 'hi' },
+  { text: 'चाकू लेकर मेरे पीछे आया है, दरवाज़ा खोलो जल्दी।', label: 1, lang: 'hi' },
+  { text: 'मेरी बेटी का अपहरण कर लिया है, फिरौती माँग रहे हैं।', label: 1, lang: 'hi' },
+  { text: 'बहुत खून बह रहा है, मुझे अस्पताल ले चलो।', label: 1, lang: 'hi' },
+  { text: 'गोली चल रही है गली में, पुलिस को बुलाओ।', label: 1, lang: 'hi' },
+  { text: 'मेरे बेटे को पीट पीटकर मार डाला।', label: 1, lang: 'hi' },
+  { text: 'मैं आत्महत्या कर लूँगा आज, रस्सी ले आओ।', label: 1, lang: 'hi' },
+  { text: 'भीड़ ने मेरे पिता को मारा है, मदद चाहिए।', label: 1, lang: 'hi' },
+  { text: 'गाँव में दंगा हो गया है, घर जला रहे हैं।', label: 1, lang: 'hi' },
+  { text: 'तेज़ाब फेंक दिया उसने मेरी बहन पर।', label: 1, lang: 'hi' },
+  { text: 'मुझे अभी मारना शुरू कर दिया है उन लोगों ने।', label: 1, lang: 'hi' },
+  { text: 'मेरे घर के बाहर बंदूकधारी खड़ा है, जान का खतरा है।', label: 1, lang: 'hi' },
+  { text: 'फायरिंग हो रही है हमारे मोहल्ले में अभी।', label: 1, lang: 'hi' },
+  { text: 'मेरी जान को खतरा है, कुछ लोग मारने की धमकी दे रहे हैं।', label: 1, lang: 'hi' },
+  { text: 'उसने मुझे गोली मार दी, खून निकल रहा है।', label: 1, lang: 'hi' },
+  { text: 'मेरे बच्चे को किसी ने चाकू से मारा है।', label: 1, lang: 'hi' },
+
+  // ===== SAFE — distress/harassment discussions (no immediate danger) =====
+  { text: 'I am feeling very anxious about my job, I cannot sleep at night.', label: 0, lang: 'en' },
+  { text: 'My landlord verbally abuses me every day and it makes me sad.', label: 0, lang: 'en' },
+  { text: 'I have been discriminated against at college because of my caste.', label: 0, lang: 'en' },
+  { text: 'I feel hopeless and alone, but I am not going to hurt myself.', label: 0, lang: 'en' },
+  { text: 'I had a panic attack yesterday and I am scared it will happen again.', label: 0, lang: 'en' },
+  { text: 'My neighbours boycotted my family and no one talks to us.', label: 0, lang: 'en' },
+  { text: 'I am depressed and I need someone to talk to.', label: 0, lang: 'en' },
+  { text: 'My uncle used to insult me when I was a child.', label: 0, lang: 'en' },
+  { text: 'I had nightmares last night about the accident.', label: 0, lang: 'en' },
+  { text: 'I am afraid to go to school because of the bullying.', label: 0, lang: 'en' },
+  { text: 'I feel humiliated and insulted by the village elders.', label: 0, lang: 'en' },
+  { text: 'I cannot eat properly, I have lost a lot of weight from stress.', label: 0, lang: 'en' },
+  { text: 'My classmate used a caste slur against me.', label: 0, lang: 'en' },
+  { text: 'I feel isolated and no one in my family understands me.', label: 0, lang: 'en' },
+  { text: 'I am worried about my exam results, I cannot focus.', label: 0, lang: 'en' },
+  { text: 'My mother is sick and I am taking care of her, it is exhausting.', label: 0, lang: 'en' },
+  { text: 'My boss keeps shouting at me in front of everyone.', label: 0, lang: 'en' },
+  { text: 'I have been feeling tired and emotionally drained for weeks.', label: 0, lang: 'en' },
+  { text: 'I was teased at school about my accent, it hurts me.', label: 0, lang: 'en' },
+  { text: 'I cannot stop crying since my father passed away.', label: 0, lang: 'en' },
+  { text: 'My in-laws verbally harass me and I feel trapped.', label: 0, lang: 'en' },
+  { text: 'I feel like giving up sometimes, but I am safe.', label: 0, lang: 'en' },
+  { text: 'I have trouble sleeping because of anxiety about my future.', label: 0, lang: 'en' },
+
+  // ===== SAFE — Hinglish =====
+  { text: 'Mujhe college mein caste slur sunne ko milta hai, bahut bura lagta hai.', label: 0, lang: 'hinglish' },
+  { text: 'Mere ghar mein sab mujhse ladte hain, akela feel karta hoon.', label: 0, lang: 'hinglish' },
+  { text: 'Main bahut pareshan hoon, neend nahi aa rahi mujhe.', label: 0, lang: 'hinglish' },
+  { text: 'Office mein mera mazak udate hain sab, bahut hurt hota hai.', label: 0, lang: 'hinglish' },
+  { text: 'Padosi log humara boycott karte hain, koi baat nahi karta.', label: 0, lang: 'hinglish' },
+  { text: 'Main bahut tension mein hoon, kuch samajh nahi aa raha.', label: 0, lang: 'hinglish' },
+  { text: 'Mujhe depression hai aur main bahut udaas rehta hoon.', label: 0, lang: 'hinglish' },
+  { text: 'School mein teachers gaali dete hain mujhe.', label: 0, lang: 'hinglish' },
+  { text: 'Mere rishtedar mujhe insult karte hain shaadi mein.', label: 0, lang: 'hinglish' },
+  { text: 'Raat ko neend nahi aati, bahut chinta lagti hai.', label: 0, lang: 'hinglish' },
+  { text: 'Mere husband daantte hain mujhe roz, main akeli mehsoos karti hoon.', label: 0, lang: 'hinglish' },
+  { text: 'Mujhe panic attack aata hai jab public mein jaati hoon.', label: 0, lang: 'hinglish' },
+  { text: 'Job dhundhne mein failure ho raha hoon, frustration hai.', label: 0, lang: 'hinglish' },
+  { text: 'Mujhe chhod ke gaye hain, dil toota hua hai.', label: 0, lang: 'hinglish' },
+  { text: 'Mere gaon ke log humara apmaan karte hain.', label: 0, lang: 'hinglish' },
+  { text: 'Mujhe apne aap par bharosa nahi hai, confidence nahi hai.', label: 0, lang: 'hinglish' },
+  { text: 'Sab kuch theek nahi hai life mein, bahut bura lag raha hai.', label: 0, lang: 'hinglish' },
+  { text: 'Mere papa beemar hain, unki chinta lagti hai mujhe.', label: 0, lang: 'hinglish' },
+  { text: 'Mujhe exam ka result aane ka dar hai, padhai nahi ho rahi.', label: 0, lang: 'hinglish' },
+  { text: 'Mujhe log hurt karte hain comments se, depressed feel karta hoon.', label: 0, lang: 'hinglish' },
+
+  // ===== SAFE — Hindi (Devanagari) =====
+  { text: 'मुझे बहुत चिंता हो रही है, नींद नहीं आ रही।', label: 0, lang: 'hi' },
+  { text: 'मेरे पड़ोसी हमारा बहिष्कार करते हैं, कुछ नहीं बोलते।', label: 0, lang: 'hi' },
+  { text: 'मुझे ऑफ़िस में बहुत ताना मारते हैं, दुख होता है।', label: 0, lang: 'hi' },
+  { text: 'मैं बहुत उदास रहता हूँ और अकेला महसूस करता हूँ।', label: 0, lang: 'hi' },
+  { text: 'मेरे ससुराल वाले रोज़ ताने मारते हैं, फँसी हुई हूँ।', label: 0, lang: 'hi' },
+  { text: 'स्कूल में मेरे साथ भेदभाव होता है, जातिगत गालियाँ दी जाती हैं।', label: 0, lang: 'hi' },
+  { text: 'मुझे पैनिक अटैक आता है, बहुत डर लगता है।', label: 0, lang: 'hi' },
+  { text: 'मैं बहुत थका हुआ हूँ, नौकरी में बहुत दबाव है।', label: 0, lang: 'hi' },
+  { text: 'मेरे रिश्तेदार मुझे अपमानित करते हैं।', label: 0, lang: 'hi' },
+  { text: 'मैं अपने पिता की बीमारी को लेकर बहुत चिंतित हूँ।', label: 0, lang: 'hi' },
+  { text: 'मुझे किसी ने अभी तक समझा नहीं है, अकेलापन महसूस होता है।', label: 0, lang: 'hi' },
+  { text: 'परीक्षा के बारे में बहुत तनाव है, ध्यान नहीं लग रहा।', label: 0, lang: 'hi' },
+  { text: 'मेरे पति मुझे रोज़ डाँटते हैं, बहुत बुरा लगता है।', label: 0, lang: 'hi' },
+  { text: 'मेरी माँ की मृत्यु के बाद से मैं रोता रहता हूँ।', label: 0, lang: 'hi' },
+  { text: 'जीवन में सब कुछ गलत हो रहा है, उदासी है।', label: 0, lang: 'hi' },
+  { text: 'मुझे गाँव के लोग अपमान करते हैं, अपमानित करते हैं।', label: 0, lang: 'hi' },
+  { text: 'मुझे नौकरी नहीं मिल रही है, बहुत निराशा है।', label: 0, lang: 'hi' },
+  { text: 'मेरे माता-पिता ने मुझे समझा नहीं, अकेलापन है।', label: 0, lang: 'hi' },
+  { text: 'मुझे हर रोज़ ताने सुनने को मिलते हैं, बहुत तकलीफ़ है।', label: 0, lang: 'hi' },
+  { text: 'मैं रात को सो नहीं पाता, बहुत चिंता लगी रहती है।', label: 0, lang: 'hi' },
+]
+
+// Helpful for quick inspection at runtime / debugging.
+export function countByLanguage(): Record<'en' | 'hinglish' | 'hi', { positive: number; negative: number }> {
+  const out: Record<'en' | 'hinglish' | 'hi', { positive: number; negative: number }> = {
+    en: { positive: 0, negative: 0 },
+    hinglish: { positive: 0, negative: 0 },
+    hi: { positive: 0, negative: 0 },
+  }
+  for (const ex of SAFETY_TRAINING_DATA) {
+    if (ex.label === 1) out[ex.lang].positive++
+    else out[ex.lang].negative++
+  }
+  return out
+}

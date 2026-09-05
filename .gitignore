@@ -1,0 +1,94 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build outputs
+dist/
+dist-ssr/
+.next/
+out/
+build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files and secrets (NEVER COMMIT)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+backend/.env
+saathi-repo/.env
+saathi-repo/backend/.env
+saathi-repo/frontend/.env
+saathi-repo/frontend/.env.local
+
+# Allow example and template environment files
+!.env.example
+!.env.production.example
+!saathi-repo/.env.example
+!saathi-repo/frontend/.env.example
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+ENV/
+
+# Databases & local state
+*.db
+*.sqlite
+*.sqlite3
+saathi_dev.db
+backend/saathi_dev.db
+saathi-repo/backend/saathi_dev.db
+server/nhaa_database.json
+
+# Explicitly ensure ML models are committed
+!backend/saathi_model/*.pkl
+!saathi-repo/backend/saathi_model/*.pkl
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
