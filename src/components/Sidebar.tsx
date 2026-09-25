@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import {
+  Home,
   LayoutGrid,
   FileSignature,
   UserCheck,
@@ -19,8 +20,13 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const navItems = [
     {
-      name: 'Dashboard',
+      name: 'Ministry Portal Home',
       path: '/',
+      icon: Home,
+    },
+    {
+      name: 'Portal Dashboard',
+      path: '/dashboard',
       icon: LayoutGrid,
     },
     {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { DosjeNhaaOrganisation } from './pages/DosjeNhaaOrganisation'
 import { Dashboard } from './pages/Dashboard'
 import { StressTraumaAssessment } from './pages/StressTraumaAssessment'
 import { RegisterGrievance } from './pages/RegisterGrievance'
@@ -17,7 +18,8 @@ export const App: React.FC = () => {
       <Routes>
         {/* Main Citizen Portal Layout Routes */}
         <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
+          <Route index element={<DosjeNhaaOrganisation />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="register-grievance" element={<RegisterGrievance />} />
           <Route path="register-rescue" element={<RegisterRescue />} />
           <Route path="stress-trauma-assessment" element={<StressTraumaAssessment />} />
