@@ -843,24 +843,21 @@ export const AdminDashboard: React.FC = () => {
 
                           {/* Priority */}
                           <td className="p-3 whitespace-nowrap">
-                            {c.priority === 'CRITICAL' && (
+                            {String(c.priority || '').toUpperCase().includes('CRITICAL') ? (
                               <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-red-600 text-white font-extrabold text-[10px] uppercase tracking-wider shadow-xs whitespace-nowrap">
                                 CRITICAL SOS
                               </span>
-                            )}
-                            {c.priority === 'HIGH' && (
+                            ) : String(c.priority || '').toUpperCase() === 'HIGH' ? (
                               <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-amber-500 text-white font-bold text-[10px] uppercase tracking-wider shadow-xs whitespace-nowrap">
                                 HIGH
                               </span>
-                            )}
-                            {c.priority === 'MEDIUM' && (
-                              <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 font-bold text-[10px] uppercase tracking-wider border border-blue-200 whitespace-nowrap">
-                                MEDIUM
-                              </span>
-                            )}
-                            {c.priority === 'RESOLVED' && (
+                            ) : String(c.priority || '').toUpperCase() === 'RESOLVED' ? (
                               <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 font-bold text-[10px] uppercase tracking-wider border border-emerald-200 whitespace-nowrap">
                                 RESOLVED
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 font-bold text-[10px] uppercase tracking-wider border border-blue-200 whitespace-nowrap">
+                                {c.priority ? String(c.priority).toUpperCase() : 'MEDIUM'}
                               </span>
                             )}
                           </td>
