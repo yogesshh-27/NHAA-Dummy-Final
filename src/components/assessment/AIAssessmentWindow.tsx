@@ -266,7 +266,7 @@ export const AIAssessmentWindow: React.FC<AIAssessmentWindowProps> = ({
   const [userAnswerText, setUserAnswerText] = useState('')
 
   // Speech & Voice State
-  const [isVoiceMuted, setIsVoiceMuted] = useState(false)
+  const [isVoiceMuted, setIsVoiceMuted] = useState(true) // Default to muted as per requirements
   const [isAISpeaking, setIsAISpeaking] = useState(false)
   const [activeSentenceIndex, setActiveSentenceIndex] = useState(0)
   const [, setSpeechStatus] = useState<SpeechStatus>('idle')
@@ -423,10 +423,12 @@ export const AIAssessmentWindow: React.FC<AIAssessmentWindowProps> = ({
   const handleToggleVoiceMute = () => {
     if (!isVoiceMuted) {
       if (cancelSpeechRef.current) cancelSpeechRef.current()
+      audioEngine.setMuted(true)
       audioEngine.stopSpeaking()
       setIsAISpeaking(false)
       setIsVoiceMuted(true)
     } else {
+      audioEngine.setMuted(false)
       setIsVoiceMuted(false)
       playCurrentQuestionAudio(selectedLang, currentStepIndex)
     }

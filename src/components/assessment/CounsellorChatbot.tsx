@@ -65,13 +65,30 @@ export const CounsellorChatbot: React.FC<CounsellorChatbotProps> = ({
   const [inputText, setInputText] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [isSending, setIsSending] = useState(false)
-  const [isVoiceMuted, setIsVoiceMuted] = useState(false)
+  const [isVoiceMuted, setIsVoiceMuted] = useState(true) // Default to muted as per requirements
+  const isVoiceMutedRef = useRef(true)
   const [isRecording, setIsRecording] = useState(false)
   const [showAnswerSummary, setShowAnswerSummary] = useState(false)
   const [identifiedIssues, setIdentifiedIssues] = useState<string[]>([])
   const [suggestedPrompts, setSuggestedPrompts] = useState<string[]>([])
 
   const chatBottomRef = useRef<HTMLDivElement>(null)
+
+  // Ensure AudioEngine starts in muted mode
+  useEffect(() => {
+    audioEngine.setMuted(true)
+    audioEngine.stopSpeaking()
+  }, [])
+
+  const handleToggleVoiceMute = () => {
+    const nextMuted = !isVoiceMuted
+    setIsVoiceMuted(nextMuted)
+    isVoiceMutedRef.current = nextMuted
+    audioEngine.setMuted(nextMuted)
+    if (nextMuted) {
+      audioEngine.stopSpeaking()
+    }
+  }
 
   // ── Auto-scroll ──────────────────────────────────────────────────────────
   useEffect(() => {
@@ -269,7 +286,7 @@ Return only valid JSON.`
         }
         setMessages([welcomeMsg])
 
-        if (!isVoiceMuted && data.greeting) {
+        if (!isVoiceMutedRef.current && !isVoiceMuted && data.greeting) {
           try {
             audioEngine.speakText(data.greeting, language)
           } catch (e) {
@@ -499,7 +516,7 @@ Keep your tone warm, encouraging, non-judgmental, and validating. If they are in
       }
       setMessages((prev) => [...prev, counsellorReply])
 
-      if (!isVoiceMuted && replyText) {
+      if (!isVoiceMutedRef.current && replyText) {
         try {
           audioEngine.speakText(replyText, language)
         } catch (audioErr) {
@@ -578,14 +595,15 @@ Keep your tone warm, encouraging, non-judgmental, and validating. If they are in
           {/* Voice Mute Toggle */}
           <button
             type="button"
-            onClick={() => {
-              if (!isVoiceMuted) audioEngine.stopSpeaking()
-              setIsVoiceMuted(!isVoiceMuted)
-            }}
-            className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-            title={isVoiceMuted ? 'Unmute counsellor voice' : 'Mute counsellor voice'}
+            onClick={handleToggleVoiceMute}
+            className={`p-2 rounded-xl transition-all cursor-pointer ${
+              isVoiceMuted
+                ? 'bg-white/10 hover:bg-white/20 text-white'
+                : 'bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 hover:bg-emerald-500/40'
+            }`}
+            title={isVoiceMuted ? 'Muted (Click to Unmute voice)' : 'Voice active (Click to Mute)'}
           >
-            {isVoiceMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            {isVoiceMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 animate-pulse text-emerald-300" />}
           </button>
 
           {/* Emergency 14566 */}

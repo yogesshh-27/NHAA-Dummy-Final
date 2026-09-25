@@ -126,6 +126,20 @@ export class AudioEngine {
   private extendedSilenceStart: number | null = null
   private silenceAlertSent = false
   private animFrameId: number | null = null
+  private activeSpeakerCancel: (() => void) | null = null
+  private isMuted = true
+
+  // Set Mute state globally for AudioEngine
+  setMuted(muted: boolean) {
+    this.isMuted = muted
+    if (muted) {
+      this.stopSpeaking()
+    }
+  }
+
+  isAudioMuted(): boolean {
+    return this.isMuted
+  }
 
   // Check if Web Speech API is supported
   isSpeechRecognitionSupported(): boolean {
@@ -601,7 +615,7 @@ export class AudioEngine {
     onSentenceStart?: (index: number) => void,
     onComplete?: () => void
   ): () => void {
-    if (!('speechSynthesis' in window) || !sentences || sentences.length === 0) {
+    if (!('speechSynthesis' in window) || !sentences || sentences.length === 0 || this.isMuted) {
       if (onComplete) onComplete()
       return () => {}
     }
@@ -616,15 +630,17 @@ export class AudioEngine {
       return () => {}
     }
 
-    window.speechSynthesis.cancel()
+    this.stopSpeaking()
     let isCancelled = false
     let currentIndex = 0
+    let sentenceTimeout: any = null
     const voice = this.getMatchingVoice(lang)
 
     const speakNextSentence = () => {
-      if (isCancelled) return
+      if (isCancelled || this.isMuted) return
 
       if (currentIndex >= cleanSentences.length) {
+        this.activeSpeakerCancel = null
         if (onComplete) onComplete()
         return
       }
@@ -654,17 +670,17 @@ export class AudioEngine {
       }
 
       utterance.onend = () => {
-        if (isCancelled) return
+        if (isCancelled || this.isMuted) return
         currentIndex++
         // Small natural pause between sentences
-        setTimeout(() => {
+        sentenceTimeout = setTimeout(() => {
           speakNextSentence()
         }, 320)
       }
 
       utterance.onerror = (e) => {
         console.warn('SpeechSynthesis sentence error:', e)
-        if (isCancelled) return
+        if (isCancelled || this.isMuted) return
         currentIndex++
         speakNextSentence()
       }
@@ -677,17 +693,24 @@ export class AudioEngine {
       speakNextSentence()
     }, 150)
 
-    // Return cancellation function
-    return () => {
+    // Return cancellation function and register as active
+    const cancelFn = () => {
       isCancelled = true
       clearTimeout(timer)
-      window.speechSynthesis.cancel()
+      if (sentenceTimeout) clearTimeout(sentenceTimeout)
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel()
+        } catch {}
+      }
     }
+    this.activeSpeakerCancel = cancelFn
+    return cancelFn
   }
 
   // AI Voice Narration (Single text / prompt)
   speakText(text: string, lang: string = 'en', onEnd?: () => void) {
-    if (!('speechSynthesis' in window)) {
+    if (this.isMuted || typeof window === 'undefined' || !('speechSynthesis' in window)) {
       if (onEnd) onEnd()
       return
     }
@@ -702,11 +725,11 @@ export class AudioEngine {
     // If multi-sentence, speak sequentially for natural breathing and to prevent browser TTS cutoffs
     const sentences = this.splitIntoSentences(clean)
     if (sentences.length > 1) {
-      this.speakSentences(sentences, lang, undefined, onEnd)
+      this.activeSpeakerCancel = this.speakSentences(sentences, lang, undefined, onEnd)
       return
     }
 
-    window.speechSynthesis.cancel()
+    this.stopSpeaking()
     const utterance = new SpeechSynthesisUtterance(clean)
     utterance.rate = 0.95
     utterance.pitch = 1.0
@@ -721,11 +744,23 @@ export class AudioEngine {
       utterance.lang = 'en-IN'
     }
 
+    let isCancelled = false
+    this.activeSpeakerCancel = () => {
+      isCancelled = true
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel()
+        } catch {}
+      }
+    }
+
     utterance.onend = () => {
-      if (onEnd) onEnd()
+      this.activeSpeakerCancel = null
+      if (!isCancelled && onEnd) onEnd()
     }
     utterance.onerror = () => {
-      if (onEnd) onEnd()
+      this.activeSpeakerCancel = null
+      if (!isCancelled && onEnd) onEnd()
     }
 
     window.speechSynthesis.speak(utterance)
@@ -737,8 +772,16 @@ export class AudioEngine {
   }
 
   stopSpeaking() {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel()
+    if (this.activeSpeakerCancel) {
+      try {
+        this.activeSpeakerCancel()
+      } catch {}
+      this.activeSpeakerCancel = null
+    }
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel()
+      } catch {}
     }
   }
 
