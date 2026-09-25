@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Sparkles, MessageSquare, ArrowRight, ShieldCheck, Lock, AlertCircle, Loader2, User, LogIn } from 'lucide-react'
+import { Sparkles, MessageSquare, ArrowRight, ShieldCheck, Lock, AlertCircle, Loader2, LogIn } from 'lucide-react'
 import type { User as FirebaseUser } from 'firebase/auth'
 
 interface AssessmentLandingProps {
