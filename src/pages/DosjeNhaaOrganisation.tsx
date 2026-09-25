@@ -129,7 +129,7 @@ export const DosjeNhaaOrganisation: React.FC = () => {
                 A Constitutional Body under Article 338 of the Constitution of India. The Commission is established with a view to provide safeguards against the exploitation of Scheduled Castes and to protect and promote their social, educational, economic and cultural interests.
               </div>
 
-              {/* ── Exact White Action Buttons redirecting to main website ── */}
+              {/* ── Exact White Action Buttons matching official DOSJE website ── */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   to="/register-grievance"
@@ -157,34 +157,12 @@ export const DosjeNhaaOrganisation: React.FC = () => {
                   <span>Track Grievance Status</span>
                   <span className="font-extrabold text-base leading-none">→</span>
                 </Link>
-
-                {/* Direct Redirection to Main Portal Operations Dashboard */}
-                <Link
-                  to="/dashboard"
-                  id="hero-btn-dashboard"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#00274d] text-white hover:bg-[#001730] font-bold text-xs sm:text-sm rounded-lg shadow-md transition-all active:scale-[0.98] border border-blue-300/40"
-                  title="Open the main portal operations dashboard"
-                >
-                  <span>Portal Dashboard</span>
-                  <span className="font-extrabold text-base text-amber-300 leading-none">→</span>
-                </Link>
-
-                {/* Direct Redirection to Stress & Trauma Assessment */}
-                <Link
-                  to="/stress-trauma-assessment"
-                  id="hero-btn-trauma-assessment"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0052cc] hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-lg shadow-md transition-all active:scale-[0.98]"
-                  title="Launch confidential stress & trauma evaluation"
-                >
-                  <span>Stress &amp; Trauma Assessment</span>
-                  <span className="font-extrabold text-base leading-none">→</span>
-                </Link>
               </div>
 
             </div>
 
-            {/* Right 3-4 cols: New Delhi Headquarters & Helpline 14566 */}
-            <div className="lg:col-span-4 xl:col-span-3 flex flex-row lg:flex-col justify-between lg:justify-center gap-6 lg:gap-8 lg:border-l lg:border-white/20 lg:pl-8 text-white">
+            {/* Right 3-4 cols: New Delhi Headquarters, Helpline 14566 & Portal Dashboard Entry */}
+            <div className="lg:col-span-4 xl:col-span-3 flex flex-row lg:flex-col justify-between lg:justify-center gap-5 lg:gap-6 lg:border-l lg:border-white/20 lg:pl-8 text-white">
               <div>
                 <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
                   New Delhi
@@ -205,12 +183,25 @@ export const DosjeNhaaOrganisation: React.FC = () => {
                   Hindi, English &amp; 13 Regional Languages
                 </p>
               </div>
+
+              <div className="pt-1">
+                <Link
+                  to="/dashboard"
+                  id="hero-btn-dashboard"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-lg shadow-md transition-all active:scale-[0.98]"
+                  title="Open the main portal operations dashboard"
+                >
+                  <LayoutGrid className="w-3.5 h-3.5" />
+                  <span>Operations Dashboard</span>
+                  <span className="font-extrabold text-sm">→</span>
+                </Link>
+              </div>
             </div>
 
           </div>
 
-          {/* Quick At-a-Glance Stats Cards matching the official DOSJE section */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-white/15">
+          {/* Quick At-a-Glance Stats Cards matching the official DOSJE section with generous separation */}
+          <div className="mt-8 pt-6 border-t border-white/20 grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 shrink-0">
                 <MapPin className="w-5 h-5" />
