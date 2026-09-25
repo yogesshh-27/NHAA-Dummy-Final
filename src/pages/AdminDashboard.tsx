@@ -767,12 +767,12 @@ export const AdminDashboard: React.FC = () => {
                 <table className="w-full text-xs text-left border-collapse">
                   <thead className="bg-slate-50 text-slate-700 uppercase font-extrabold text-xs tracking-wider border-b border-slate-200">
                     <tr>
-                      <th className="p-3">Reference URN / Session</th>
-                      <th className="p-3">Victim / Intake Date-Time</th>
-                      <th className="p-3">Alleged Offence</th>
-                      <th className="p-3">Priority</th>
-                      <th className="p-3">Workflow & Connection</th>
-                      <th className="p-3 text-right">Actions</th>
+                      <th className="p-3 whitespace-nowrap min-w-[160px]">Reference URN / Session</th>
+                      <th className="p-3 whitespace-nowrap min-w-[170px]">Victim / Intake Date-Time</th>
+                      <th className="p-3 min-w-[220px]">Alleged Offence</th>
+                      <th className="p-3 whitespace-nowrap min-w-[120px]">Priority</th>
+                      <th className="p-3 whitespace-nowrap min-w-[180px]">Workflow &amp; Connection</th>
+                      <th className="p-3 text-right whitespace-nowrap min-w-[180px]">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200">
@@ -842,24 +842,24 @@ export const AdminDashboard: React.FC = () => {
                           </td>
 
                           {/* Priority */}
-                          <td className="p-3">
+                          <td className="p-3 whitespace-nowrap">
                             {c.priority === 'CRITICAL' && (
-                              <span className="px-2.5 py-1 rounded bg-red-600 text-white font-extrabold text-[10px] uppercase tracking-wide animate-pulse">
+                              <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-red-600 text-white font-extrabold text-[10px] uppercase tracking-wider shadow-xs whitespace-nowrap">
                                 CRITICAL SOS
                               </span>
                             )}
                             {c.priority === 'HIGH' && (
-                              <span className="px-2.5 py-1 rounded bg-amber-500 text-white font-bold text-[10px] uppercase tracking-wide">
+                              <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-amber-500 text-white font-bold text-[10px] uppercase tracking-wider shadow-xs whitespace-nowrap">
                                 HIGH
                               </span>
                             )}
                             {c.priority === 'MEDIUM' && (
-                              <span className="px-2.5 py-1 rounded bg-blue-100 text-blue-800 font-bold text-[10px] uppercase tracking-wide">
+                              <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 font-bold text-[10px] uppercase tracking-wider border border-blue-200 whitespace-nowrap">
                                 MEDIUM
                               </span>
                             )}
                             {c.priority === 'RESOLVED' && (
-                              <span className="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] uppercase tracking-wide">
+                              <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 font-bold text-[10px] uppercase tracking-wider border border-emerald-200 whitespace-nowrap">
                                 RESOLVED
                               </span>
                             )}
