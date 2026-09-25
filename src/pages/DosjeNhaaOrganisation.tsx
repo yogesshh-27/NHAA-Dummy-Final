@@ -13,12 +13,10 @@ import {
   ExternalLink,
   Download,
   Building,
-  Users,
   Mail,
   MapPin,
   CheckCircle2,
   Clock,
-  Sparkles,
   ArrowRight,
   Scale,
   HeartHandshake,
@@ -108,196 +106,107 @@ export const DosjeNhaaOrganisation: React.FC = () => {
         </div>
       </div>
 
-      {/* ── 3. HERO SECTION with Official Statutory Citation & Clickable Redirection Buttons ── */}
-      <section className="bg-gradient-to-br from-[#00274d] via-[#003366] to-[#0a3161] text-white py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Subtle decorative background watermarks */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-400/5 rounded-full blur-2xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto relative z-10 space-y-8">
+      {/* ── 3. HERO SECTION matching official www.dosje.gov.in/organisation/national-helpline-against-atrocities/ ── */}
+      <section className="bg-gradient-to-r from-[#005abb] via-[#0062d2] to-[#0052b4] text-white py-10 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden shadow-sm">
+        <div className="max-w-7xl mx-auto relative z-10">
           
-          {/* Header Tag & Constitution Article */}
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold backdrop-blur-xs">
-              <Shield className="w-3.5 h-3.5 text-amber-300" />
-              <span>A Constitutional Body under Article 338 of the Constitution of India</span>
-            </div>
-
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div className="space-y-2">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left 8-9 cols: Title, Vertical Quote & Exact White Action Buttons */}
+            <div className="lg:col-span-8 xl:col-span-9 space-y-4">
+              
+              <div className="space-y-1">
+                <span className="text-xs sm:text-sm font-semibold text-blue-100 tracking-wide uppercase">
+                  Associated Organisation
+                </span>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
                   National Helpline Against Atrocities (NHAA)
                 </h1>
-                <p className="text-blue-200 text-sm sm:text-base font-medium max-w-3xl leading-relaxed">
-                  Ministry of Social Justice and Empowerment • Department of Social Justice &amp; Empowerment, Government of India
+              </div>
+
+              {/* Vertical border-l quote matching user's exact screenshot */}
+              <div className="border-l-2 border-white pl-4 italic text-white/95 text-xs sm:text-sm max-w-2xl leading-relaxed my-3">
+                A Constitutional Body under Article 338 of the Constitution of India. The Commission is established with a view to provide safeguards against the exploitation of Scheduled Castes and to protect and promote their social, educational, economic and cultural interests.
+              </div>
+
+              {/* ── Exact White Action Buttons redirecting to main website ── */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Link
+                  to="/register-grievance"
+                  id="hero-btn-register-grievance"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0052cc] hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-lg shadow-md transition-all active:scale-[0.98]"
+                >
+                  <span>Register Grievance</span>
+                  <span className="font-extrabold text-base leading-none">→</span>
+                </Link>
+
+                <Link
+                  to="/register-rescue"
+                  id="hero-btn-register-rescue"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0052cc] hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-lg shadow-md transition-all active:scale-[0.98]"
+                >
+                  <span>Register a Rescue</span>
+                  <span className="font-extrabold text-base leading-none">→</span>
+                </Link>
+
+                <Link
+                  to="/track-status"
+                  id="hero-btn-track-status"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0052cc] hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-lg shadow-md transition-all active:scale-[0.98]"
+                >
+                  <span>Track Grievance Status</span>
+                  <span className="font-extrabold text-base leading-none">→</span>
+                </Link>
+
+                {/* Direct Redirection to Main Portal Operations Dashboard */}
+                <Link
+                  to="/dashboard"
+                  id="hero-btn-dashboard"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#00274d] text-white hover:bg-[#001730] font-bold text-xs sm:text-sm rounded-lg shadow-md transition-all active:scale-[0.98] border border-blue-300/40"
+                  title="Open the main portal operations dashboard"
+                >
+                  <span>Portal Dashboard</span>
+                  <span className="font-extrabold text-base text-amber-300 leading-none">→</span>
+                </Link>
+
+                {/* Direct Redirection to Stress & Trauma Assessment */}
+                <Link
+                  to="/stress-trauma-assessment"
+                  id="hero-btn-trauma-assessment"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#0052cc] hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-lg shadow-md transition-all active:scale-[0.98]"
+                  title="Launch confidential stress & trauma evaluation"
+                >
+                  <span>Stress &amp; Trauma Assessment</span>
+                  <span className="font-extrabold text-base leading-none">→</span>
+                </Link>
+              </div>
+
+            </div>
+
+            {/* Right 3-4 cols: New Delhi Headquarters & Helpline 14566 */}
+            <div className="lg:col-span-4 xl:col-span-3 flex flex-row lg:flex-col justify-between lg:justify-center gap-6 lg:gap-8 lg:border-l lg:border-white/20 lg:pl-8 text-white">
+              <div>
+                <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+                  New Delhi
+                </h4>
+                <p className="text-xs text-blue-100 font-medium mt-0.5">
+                  Headquarters (Shastri Bhawan)
                 </p>
               </div>
 
-              {/* Toll-free Helpline 14566 Hero Badge */}
-              <div className="flex items-center gap-3.5 bg-white/10 border border-white/20 rounded-2xl p-3.5 sm:p-4 backdrop-blur-sm shrink-0 shadow-lg">
-                <div className="w-12 h-12 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black text-xl shadow-md">
-                  <Phone className="w-6 h-6 animate-pulse text-slate-950" />
+              <div>
+                <h4 className="text-xs text-blue-100 uppercase tracking-wider font-semibold">
+                  Helpline (24x7 Toll-Free)
+                </h4>
+                <div className="text-3xl sm:text-4xl font-black text-amber-300 tracking-tight mt-0.5">
+                  14566
                 </div>
-                <div>
-                  <div className="text-[11px] text-amber-200 uppercase font-bold tracking-wider">
-                    24x7 Toll-Free National Helpline
-                  </div>
-                  <div className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-                    14566
-                  </div>
-                  <div className="text-[10px] text-blue-200">
-                    Available in Hindi, English &amp; 13 Regional Languages
-                  </div>
-                </div>
+                <p className="text-[11px] text-blue-100 mt-0.5">
+                  Hindi, English &amp; 13 Regional Languages
+                </p>
               </div>
             </div>
 
-            <p className="text-slate-200 text-xs sm:text-sm max-w-4xl leading-relaxed pt-1">
-              Established with a view to provide statutory safeguards against exploitation of Scheduled Castes and Scheduled Tribes, 
-              protect and promote their civil rights, and ensure transparent end-to-end grievance redressal, trauma rehabilitation, and relief tracking under the 
-              <strong> Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989</strong> and the 
-              <strong> Protection of Civil Rights (PCR) Act, 1955</strong>.
-            </p>
-          </div>
-
-          {/* ──── CLICKABLE REDIRECTION BUTTONS (User Requirement) ──── */}
-          <div className="pt-2">
-            <div className="text-xs font-bold uppercase tracking-wider text-amber-300 mb-3 flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>Interactive Portal Services &amp; Redirection Actions:</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              
-              {/* Button 1: Operations Dashboard */}
-              <Link
-                to="/dashboard"
-                id="btn-goto-dashboard"
-                className="group p-4 rounded-2xl bg-white text-slate-900 hover:bg-blue-50 border-2 border-transparent hover:border-amber-400 shadow-md transition-all flex flex-col justify-between"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#00274d] flex items-center justify-center font-bold">
-                    <LayoutGrid className="w-5 h-5 text-[#00274d]" />
-                  </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#00274d] border border-blue-200">
-                    Main Operations
-                  </span>
-                </div>
-                <div>
-                  <div className="font-extrabold text-sm sm:text-base text-[#00274d] group-hover:text-blue-900 flex items-center gap-1">
-                    <span>Portal Dashboard</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-                    View active dockets, state charts, live grievance metrics &amp; closure flowchart.
-                  </p>
-                </div>
-              </Link>
-
-              {/* Button 2: Register Grievance */}
-              <Link
-                to="/register-grievance"
-                id="btn-goto-register-grievance"
-                className="group p-4 rounded-2xl bg-white text-slate-900 hover:bg-rose-50 border-2 border-transparent hover:border-rose-400 shadow-md transition-all flex flex-col justify-between"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
-                    <FileSignature className="w-5 h-5 text-rose-700" />
-                  </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
-                    PoA Redressal
-                  </span>
-                </div>
-                <div>
-                  <div className="font-extrabold text-sm sm:text-base text-rose-900 group-hover:text-rose-950 flex items-center gap-1">
-                    <span>Register Grievance</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-                    Lodge a formal SC/ST atrocity complaint as victim, informer, or NGO.
-                  </p>
-                </div>
-              </Link>
-
-              {/* Button 3: Register a Rescue (SOS) */}
-              <Link
-                to="/register-rescue"
-                id="btn-goto-register-rescue"
-                className="group p-4 rounded-2xl bg-white text-slate-900 hover:bg-amber-50 border-2 border-transparent hover:border-amber-400 shadow-md transition-all flex flex-col justify-between"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
-                    <UserCheck className="w-5 h-5 text-amber-800" />
-                  </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-                    Immediate SOS
-                  </span>
-                </div>
-                <div>
-                  <div className="font-extrabold text-sm sm:text-base text-amber-950 group-hover:text-amber-900 flex items-center gap-1">
-                    <span>Register a Rescue</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-                    Emergency distress notification dispatched to local police and PCR units.
-                  </p>
-                </div>
-              </Link>
-
-              {/* Button 4: Stress & Trauma Assessment */}
-              <Link
-                to="/stress-trauma-assessment"
-                id="btn-goto-trauma-assessment"
-                className="group p-4 rounded-2xl bg-white text-slate-900 hover:bg-purple-50 border-2 border-transparent hover:border-purple-400 shadow-md transition-all flex flex-col justify-between"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
-                    <Brain className="w-5 h-5 text-purple-700" />
-                  </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200">
-                    Psychological Aid
-                  </span>
-                </div>
-                <div>
-                  <div className="font-extrabold text-sm sm:text-base text-purple-950 group-hover:text-purple-900 flex items-center gap-1">
-                    <span>Trauma Assessment</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-                    AI-driven trauma screening &amp; continuous counseling for atrocity survivors.
-                  </p>
-                </div>
-              </Link>
-
-            </div>
-
-            {/* Secondary Link Buttons Row: Track Status, Citizen Login, Officer Login */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3">
-              <Link
-                to="/track-status"
-                className="py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
-              >
-                <FileSearch className="w-4 h-4 text-blue-200" />
-                <span>Track Grievance Status (URN Lookup)</span>
-                <ChevronRight className="w-3.5 h-3.5 text-blue-300" />
-              </Link>
-              <Link
-                to="/citizen/login"
-                className="py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
-              >
-                <Users className="w-4 h-4 text-emerald-300" />
-                <span>Citizen Portal (SAMAVESH Login)</span>
-                <ChevronRight className="w-3.5 h-3.5 text-emerald-300" />
-              </Link>
-              <Link
-                to="/admin/login"
-                className="py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-xs"
-              >
-                <Shield className="w-4 h-4 text-slate-950" />
-                <span>Official Nodal Officer Access (Admin Portal)</span>
-                <ChevronRight className="w-3.5 h-3.5 text-slate-950" />
-              </Link>
-            </div>
           </div>
 
           {/* Quick At-a-Glance Stats Cards matching the official DOSJE section */}
