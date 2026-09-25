@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import {
   Mail, Lock, Eye, EyeOff, ArrowLeft, User,
   Shield, ChevronRight, AlertCircle, CheckCircle2, Phone,
+  HeartHandshake, Scale,
 } from 'lucide-react'
 import {
   signInWithGoogle,
@@ -129,25 +130,181 @@ export const CitizenLogin: React.FC = () => {
 
   // ── Login / Register / Forgot UI ────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 flex flex-col">
+    <div className="min-h-screen bg-[#fafbfc] text-slate-800 font-sans antialiased flex flex-col justify-between relative overflow-x-hidden selection:bg-blue-100">
 
-      {/* Government top bar */}
-      <div className="bg-[#0c2340] text-white py-2 px-4">
+      {/* ── Top Bar with Return link & Ministry branding ── */}
+      <header className="w-full bg-[#00274d] text-white py-2 px-4 sm:px-6 lg:px-10 shadow-xs z-10">
         <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
           <div className="flex items-center gap-2">
-            <span className="font-bold tracking-wide">GOVERNMENT OF INDIA</span>
-            <span className="text-slate-500">|</span>
-            <span className="text-slate-300">Ministry of Social Justice &amp; Empowerment</span>
+            <span className="font-bold tracking-wider uppercase text-[11px] sm:text-xs">GOVERNMENT OF INDIA</span>
+            <span className="text-white/40 hidden sm:inline">|</span>
+            <span className="text-blue-100 text-[11px] sm:text-xs hidden sm:inline">Ministry of Social Justice &amp; Empowerment</span>
           </div>
-          <Link to="/" className="text-blue-200 hover:text-white flex items-center gap-1 font-semibold transition-colors">
-            <ArrowLeft className="w-3.5 h-3.5" /> Public Portal
+          <Link to="/" className="text-blue-200 hover:text-white flex items-center gap-1.5 font-medium transition-colors group">
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
+            <span>Return to Public Portal</span>
           </Link>
         </div>
-      </div>
+      </header>
 
-      <div className="flex-1 flex items-center justify-center p-4 py-10">
-        <div className="w-full max-w-md">
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden">
+      {/* ── Main Dual-Column Content (Full width & balanced on Laptops / Desktops) ── */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-10 py-6 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center z-10">
+        
+        {/* ──── LEFT SIDE: Citizen Guidance, Government Trust & Support Features (Desktop/Laptop) ──── */}
+        <div className="lg:col-span-6 xl:col-span-7 space-y-6 lg:space-y-7">
+          
+          {/* Official Emblem + Ministry Header */}
+          <div className="flex items-center gap-3.5">
+            <EmblemOfIndia className="h-16 sm:h-20 w-auto text-slate-800 flex-shrink-0" />
+            <div className="flex flex-col justify-center">
+              <span className="text-[13px] sm:text-sm font-semibold text-slate-800 leading-tight">
+                भारत सरकार
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-slate-900 tracking-wide uppercase leading-tight">
+                GOVERNMENT OF INDIA
+              </span>
+              <span className="text-[11px] sm:text-xs text-slate-600 font-medium leading-tight mt-0.5">
+                Department of Social Justice and Empowerment • SAMAVESH
+              </span>
+            </div>
+          </div>
+
+          {/* Kicker & Main Title */}
+          <div className="space-y-2 pt-1">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#003366] text-[11px] font-bold tracking-wider uppercase">
+              <Shield className="w-3 h-3 text-[#003366]" />
+              CITIZEN SUPPORT &amp; EMPOWERMENT PORTAL
+            </div>
+            <h1 className="text-3xl sm:text-4xl xl:text-[42px] font-black text-[#00274d] tracking-tight leading-[1.15]">
+              National Helpline<br />
+              Against Atrocities<br />
+              <span className="text-[#003366] font-extrabold">(NHAA - 14566)</span>
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl pt-1">
+              Confidential digital gateway for citizens to file grievances, undergo guided stress and trauma evaluations, access legal aid, and track relief compensation under the SC/ST (Prevention of Atrocities) Act.
+            </p>
+          </div>
+
+          {/* 3 Citizen Pillar Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+            
+            {/* 1. Psychological & Trauma Aid */}
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5">
+              <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center">
+                <HeartHandshake className="w-5 h-5" />
+              </div>
+              <h2 className="text-xs sm:text-sm font-bold text-slate-900">
+                Trauma &amp; Counseling
+              </h2>
+              <p className="text-[11px] text-slate-500 leading-snug">
+                AI-guided assessment and direct connection to certified psychologists.
+              </p>
+            </div>
+
+            {/* 2. 24x7 Emergency Grievance */}
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#003366] flex items-center justify-center">
+                <Shield className="w-5 h-5" />
+              </div>
+              <h2 className="text-xs sm:text-sm font-bold text-slate-900">
+                100% Confidential
+              </h2>
+              <p className="text-[11px] text-slate-500 leading-snug">
+                End-to-end encryption protects your identity and testimony.
+              </p>
+            </div>
+
+            {/* 3. Statutory Relief Monitoring */}
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5">
+              <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                <Scale className="w-5 h-5" />
+              </div>
+              <h2 className="text-xs sm:text-sm font-bold text-slate-900">
+                PoA Legal Aid
+              </h2>
+              <p className="text-[11px] text-slate-500 leading-snug">
+                Fast-track FIR follow-up, legal assistance, and government ATR tracking.
+              </p>
+            </div>
+
+          </div>
+
+          {/* 24x7 Helpline Direct Callout Banner */}
+          <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-900 via-[#003366] to-[#0f3460] text-white flex items-center justify-between gap-4 shadow-sm max-w-xl">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 shrink-0">
+                <Phone className="w-5 h-5 animate-pulse" />
+              </div>
+              <div>
+                <div className="text-[11px] text-blue-200 font-semibold uppercase tracking-wider">
+                  In Urgent Danger or Crisis?
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-white">
+                  Call National Helpline: <span className="text-amber-300 font-black text-base">14566</span> (Toll-Free 24x7)
+                </div>
+              </div>
+            </div>
+            <a
+              href="tel:14566"
+              className="px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shrink-0 transition-colors shadow-xs"
+            >
+              Call Now
+            </a>
+          </div>
+
+          {/* Tricolor Slogan Divider */}
+          <div className="flex items-center gap-3 pt-1 max-w-lg">
+            <div className="h-[2px] w-12 sm:w-16 bg-[#ff9933] rounded-full" />
+            <span className="text-[11px] sm:text-xs text-slate-500 font-medium whitespace-nowrap">
+              Together for an inclusive and protected society
+            </span>
+            <div className="h-[2px] w-12 sm:w-16 bg-[#138808] rounded-full" />
+          </div>
+
+          {/* Silhouette Artwork */}
+          <div className="pt-1 max-w-md hidden sm:block opacity-60 pointer-events-none select-none">
+            <svg
+              viewBox="0 0 500 120"
+              className="w-full h-auto text-slate-400"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <rect x="0" y="112" width="500" height="2" fill="#94a3b8" />
+              <rect x="30" y="106" width="440" height="6" fill="#cbd5e1" />
+              <rect x="50" y="100" width="400" height="6" fill="#cbd5e1" />
+              
+              <rect x="60" y="70" width="140" height="30" fill="#e2e8f0" />
+              <rect x="60" y="66" width="140" height="4" fill="#cbd5e1" />
+              {Array.from({ length: 12 }).map((_, i) => (
+                <rect key={`col-l-${i}`} x={65 + i * 11} y="72" width="4" height="28" fill="#94a3b8" />
+              ))}
+
+              <rect x="300" y="70" width="140" height="30" fill="#e2e8f0" />
+              <rect x="300" y="66" width="140" height="4" fill="#cbd5e1" />
+              {Array.from({ length: 12 }).map((_, i) => (
+                <rect key={`col-r-${i}`} x={305 + i * 11} y="72" width="4" height="28" fill="#94a3b8" />
+              ))}
+
+              <rect x="195" y="60" width="110" height="40" fill="#e2e8f0" />
+              <rect x="190" y="56" width="120" height="4" fill="#cbd5e1" />
+              {Array.from({ length: 8 }).map((_, i) => (
+                <rect key={`col-c-${i}`} x={202 + i * 13} y="62" width="5" height="38" fill="#64748b" />
+              ))}
+              <polygon points="190,56 250,38 310,56" fill="#cbd5e1" />
+
+              <rect x="220" y="32" width="60" height="8" fill="#94a3b8" />
+              <path d="M225,32 C225,12 275,12 275,32 Z" fill="#64748b" />
+              <rect x="249" y="4" width="2" height="10" fill="#475569" />
+              <circle cx="250" cy="3" r="2.5" fill="#f59e0b" />
+            </svg>
+          </div>
+
+        </div>
+
+        {/* ──── RIGHT SIDE: Citizen Login / Register Card ──── */}
+        <div className="lg:col-span-6 xl:col-span-5 w-full">
+          <div className="bg-white rounded-3xl shadow-xl border border-slate-200/90 overflow-hidden">
 
             {/* Banner */}
             <div className="bg-gradient-to-br from-[#003366] to-[#0f3460] px-6 py-7 text-white text-center relative overflow-hidden">
@@ -405,18 +562,27 @@ export const CitizenLogin: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-center text-[11px] text-slate-400 mt-4">
+          <p className="text-center text-[11px] text-slate-500 mt-4">
             Having trouble?{' '}
             <Link to="/help-faqs" className="text-blue-700 hover:underline font-semibold">View FAQs</Link>
-            {' '}or call{' '}
-            <span className="font-bold text-slate-600">14566</span>
+            {' '}or call toll-free{' '}
+            <span className="font-bold text-slate-800">14566</span>
           </p>
         </div>
-      </div>
 
-      <div className="bg-[#0c2340] text-slate-400 py-3 text-center text-xs border-t border-slate-700">
-        <p>National Informatics Centre (NIC) • Dept. of Social Justice &amp; Empowerment, GoI</p>
-      </div>
+      </main>
+
+      {/* ── Official Government Footer ── */}
+      <footer className="w-full py-4 text-center text-xs text-slate-500 border-t border-slate-200/80 bg-white/70 z-10">
+        <div className="max-w-7xl mx-auto px-4">
+          <p className="font-semibold text-slate-600">
+            National Informatics Centre (NIC) • Department of Social Justice and Empowerment, Government of India
+          </p>
+          <p className="text-[11px] text-slate-400 mt-0.5">
+            Portal Version 2.5.0 • NIC Certified Government Portal
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }
