@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu, User, LogOut } from 'lucide-react'
 import { EmblemOfIndia, DigitalIndiaLogo, SamaveshLogo } from './Emblems'
 import { subscribeToAuthState, signOutUser } from '../services/authService'
@@ -11,7 +11,13 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
+  const location = useLocation()
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null)
+
+  const citizenLoginUrl =
+    location.pathname !== '/' && location.pathname !== '/citizen/login'
+      ? `/citizen/login?redirect=${encodeURIComponent(location.pathname + location.search)}`
+      : '/citizen/login'
 
   useEffect(() => {
     const unsub = subscribeToAuthState((user) => setCurrentUser(user))
@@ -116,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
             </div>
           ) : (
             <Link
-              to="/citizen/login"
+              to={citizenLoginUrl}
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border-2 border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white text-sm font-bold shadow-xs transition-colors bg-transparent"
               id="header-citizen-login-btn"
             >

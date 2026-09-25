@@ -2,19 +2,29 @@
 // Simplified orchestrator: LANDING → CONVERSATION
 // The CONVERSATION stage uses ConversationalAssessment which handles
 // assessment + counsellor chat internally in one unified chat interface.
+// Enforces that citizen MUST be logged in first before giving the test.
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Brain, ArrowLeft, Shield } from 'lucide-react'
 import { AssessmentLanding } from '../components/assessment/AssessmentLanding'
 import { ReturningUserModal } from '../components/assessment/ReturningUserModal'
 import { ConsentModal } from '../components/assessment/ConsentModal'
+import { LoginRequiredModal } from '../components/assessment/LoginRequiredModal'
 import { AIAssessmentWindow, type AssessmentLang } from '../components/assessment/AIAssessmentWindow'
 import { CounsellorChatbot } from '../components/assessment/CounsellorChatbot'
+import { subscribeToAuthState } from '../services/authService'
+import type { User as FirebaseUser } from 'firebase/auth'
 
 export const StressTraumaAssessment: React.FC = () => {
   type Stage = 'LANDING' | 'ASSESSMENT' | 'COUNSELLOR'
   const [stage, setStage] = useState<Stage>('LANDING')
+
+  // Authentication State
+  const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null)
+  const [isAuthLoading, setIsAuthLoading] = useState(true)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+  const [loginActionReason, setLoginActionReason] = useState('give the assessment')
 
   // Modals
   const [isReturningUserModalOpen, setIsReturningUserModalOpen] = useState(false)
@@ -26,6 +36,30 @@ export const StressTraumaAssessment: React.FC = () => {
   const [selectedLang, setSelectedLang] = useState<AssessmentLang>('hinglish')
   const [distressLevel, setDistressLevel] = useState<'LOW' | 'MEDIUM' | 'HIGH'>('MEDIUM')
   const [assessmentAnswers, setAssessmentAnswers] = useState<Record<string, string>>({})
+
+  // Subscribe to real-time auth changes
+  useEffect(() => {
+    const unsub = subscribeToAuthState((user) => {
+      setCurrentUser(user)
+      setIsAuthLoading(false)
+    })
+    return () => unsub()
+  }, [])
+
+  // Guard: if user logs out while in test or tries to enter stage without login
+  useEffect(() => {
+    if (!isAuthLoading && !currentUser && stage !== 'LANDING') {
+      setStage('LANDING')
+      setLoginActionReason('give the assessment')
+      setIsLoginModalOpen(true)
+    }
+  }, [currentUser, isAuthLoading, stage])
+
+  // Helper to trigger login modal
+  const triggerLoginRequirement = (reason: string = 'give the assessment') => {
+    setLoginActionReason(reason)
+    setIsLoginModalOpen(true)
+  }
 
   // ── ID generation ─────────────────────────────────────────────────────
 
@@ -41,12 +75,20 @@ export const StressTraumaAssessment: React.FC = () => {
 
   // "Start Assessment" button on landing
   const handleStartNew = () => {
+    if (!currentUser) {
+      triggerLoginRequirement('start a new assessment')
+      return
+    }
     generateIds()
     setStage('ASSESSMENT')
   }
 
   // "Text Only" button on landing
   const handleStartText = () => {
+    if (!currentUser) {
+      triggerLoginRequirement('start the text assessment')
+      return
+    }
     if (!anonymousId) generateIds()
     setStage('ASSESSMENT')
   }
@@ -59,6 +101,10 @@ export const StressTraumaAssessment: React.FC = () => {
     chatSession: any
     previousAssessment: any
   }) => {
+    if (!currentUser) {
+      triggerLoginRequirement('access previous assessment records')
+      return
+    }
     setAnonymousId(userData.anonymousId)
     setCounsellorId(userData.counsellorId)
     setIsReturningUserModalOpen(true)
@@ -67,11 +113,21 @@ export const StressTraumaAssessment: React.FC = () => {
   // ── Handlers from ReturningUserModal ──────────────────────────────────
 
   const handleContinueChat = () => {
+    if (!currentUser) {
+      setIsReturningUserModalOpen(false)
+      triggerLoginRequirement('continue your counselor conversation')
+      return
+    }
     setIsReturningUserModalOpen(false)
     setStage('COUNSELLOR')
   }
 
   const handleTakeNewAssessment = () => {
+    if (!currentUser) {
+      setIsReturningUserModalOpen(false)
+      triggerLoginRequirement('take a new assessment')
+      return
+    }
     setIsReturningUserModalOpen(false)
     setIsConsentModalOpen(true)
   }
@@ -79,11 +135,21 @@ export const StressTraumaAssessment: React.FC = () => {
   // ── Handlers from ConsentModal ────────────────────────────────────────
 
   const handleAgreeVoice = () => {
+    if (!currentUser) {
+      setIsConsentModalOpen(false)
+      triggerLoginRequirement('start the voice assessment')
+      return
+    }
     setIsConsentModalOpen(false)
     setStage('ASSESSMENT')
   }
 
   const handleChooseText = () => {
+    if (!currentUser) {
+      setIsConsentModalOpen(false)
+      triggerLoginRequirement('start the text assessment')
+      return
+    }
     setIsConsentModalOpen(false)
     setStage('ASSESSMENT')
   }
@@ -101,6 +167,22 @@ export const StressTraumaAssessment: React.FC = () => {
     setDistressLevel(data.distressLevel)
     setCounsellorId(data.counsellorId)
     setSelectedLang(data.language)
+
+    // Store record in localStorage linked to anonymousId and user
+    try {
+      const record = {
+        anonymousId,
+        counsellorId: data.counsellorId,
+        hasPreviousChat: true,
+        userEmail: currentUser?.email,
+        result: data,
+        updatedAt: new Date().toISOString(),
+      }
+      localStorage.setItem(`NHAA_USER_${anonymousId}`, JSON.stringify(record))
+    } catch {
+      // ignore storage errors
+    }
+
     setStage('COUNSELLOR')
   }
 
@@ -147,11 +229,14 @@ export const StressTraumaAssessment: React.FC = () => {
           onStartNew={handleStartNew}
           onStartText={handleStartText}
           onReturningUserFound={handleReturningUserFound}
+          currentUser={currentUser}
+          isAuthLoading={isAuthLoading}
+          onRequireLogin={triggerLoginRequirement}
         />
       )}
 
       {/* ── AI ASSESSMENT EXAMINATION WINDOW ── */}
-      {stage === 'ASSESSMENT' && (
+      {stage === 'ASSESSMENT' && currentUser && (
         <AIAssessmentWindow
           anonymousId={anonymousId || 'ST-GUEST'}
           initialLang={selectedLang}
@@ -161,7 +246,7 @@ export const StressTraumaAssessment: React.FC = () => {
       )}
 
       {/* ── COUNSELLOR CHATBOT (TAILORED SUGGESTIONS) ── */}
-      {stage === 'COUNSELLOR' && (
+      {stage === 'COUNSELLOR' && currentUser && (
         <CounsellorChatbot
           anonymousId={anonymousId || 'ST-GUEST'}
           counsellorId={counsellorId}
@@ -189,6 +274,14 @@ export const StressTraumaAssessment: React.FC = () => {
         onAgreeVoice={handleAgreeVoice}
         onChooseText={handleChooseText}
         onCancel={() => setIsConsentModalOpen(false)}
+      />
+
+      {/* ── Login Required Modal ── */}
+      <LoginRequiredModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        redirectPath="/stress-trauma-assessment"
+        actionAttempted={loginActionReason}
       />
     </div>
   )
