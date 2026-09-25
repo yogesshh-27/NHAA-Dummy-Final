@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Mail, Lock, Eye, EyeOff, ArrowLeft, User,
   Shield, ChevronRight, AlertCircle, CheckCircle2, Phone,
@@ -28,9 +28,6 @@ const GoogleIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 export const CitizenLogin: React.FC = () => {
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
-  const redirectUrl = searchParams.get('redirect') || '/'
-
   const [mode, setMode] = useState<AuthMode>('login')
   const [showPass, setShowPass] = useState(false)
   const [email, setEmail] = useState('')
@@ -43,15 +40,15 @@ export const CitizenLogin: React.FC = () => {
   const [successMsg, setSuccessMsg] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
 
-  // Real-time auth state listener — if logged in, redirect straight to redirectUrl
+  // Real-time auth state listener — if logged in, redirect straight to home page (/)
   useEffect(() => {
     const unsub = subscribeToAuthState((user) => {
       if (user) {
-        navigate(redirectUrl, { replace: true })
+        navigate('/', { replace: true })
       }
     })
     return () => unsub()
-  }, [navigate, redirectUrl])
+  }, [navigate])
 
   const reset = () => { setSuccessMsg(''); setErrorMsg('') }
 
@@ -69,7 +66,7 @@ export const CitizenLogin: React.FC = () => {
     reset()
     try {
       await signInWithGoogle()
-      navigate(redirectUrl, { replace: true })
+      navigate('/', { replace: true })
     } catch (err) {
       handleAuthError(err)
     } finally {
@@ -84,7 +81,7 @@ export const CitizenLogin: React.FC = () => {
     reset()
     try {
       await signInWithEmail(email, password)
-      navigate(redirectUrl, { replace: true })
+      navigate('/', { replace: true })
     } catch (err) {
       handleAuthError(err)
     } finally {
@@ -103,7 +100,7 @@ export const CitizenLogin: React.FC = () => {
     reset()
     try {
       await registerWithEmail(email, password, name)
-      navigate(redirectUrl, { replace: true })
+      navigate('/', { replace: true })
     } catch (err) {
       handleAuthError(err)
     } finally {
@@ -174,17 +171,6 @@ export const CitizenLogin: React.FC = () => {
             </div>
 
             <div className="px-6 py-6 space-y-4">
-
-              {/* Assessment login required alert */}
-              {redirectUrl.includes('stress-trauma-assessment') && (
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-950 text-xs shadow-2xs">
-                  <Shield className="w-4 h-4 shrink-0 mt-0.5 text-[#003366]" />
-                  <div className="leading-relaxed">
-                    <strong className="block font-bold text-[#003366] text-xs">Citizen Login Required to Give Test</strong>
-                    <span>Please sign in or register below. Once authenticated, you will immediately be redirected to take your Stress &amp; Trauma Assessment.</span>
-                  </div>
-                </div>
-              )}
 
               {/* Feedback banners */}
               {successMsg && (
