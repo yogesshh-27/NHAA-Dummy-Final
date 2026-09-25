@@ -306,7 +306,7 @@ export function NHAAProtocolsView() {
                 SC/ST PoA Act Redressal
               </span>
             </div>
-            <h2 className="text-xl font-extrabold font-serif-header text-[#111827] tracking-tight">
+            <h2 className="text-xl font-extrabold text-[#111827] tracking-tight">
               NHAA Atrocity Response Protocols & Standard Operating Procedures (SOP)
             </h2>
             <p className="text-xs text-[#4B5563] max-w-3xl">
@@ -594,7 +594,7 @@ export function NHAAProtocolsView() {
                 <HeartHandshake className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold font-serif-header text-[#111827]">
+                <h3 className="text-base font-bold text-[#111827]">
                   NHAA 14566 Operator Communication Guidelines
                 </h3>
                 <p className="text-xs text-[#6B7280]">
@@ -677,7 +677,7 @@ export function NHAAProtocolsView() {
                 <Scale className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold font-serif-header text-[#111827]">
+                <h3 className="text-base font-bold text-[#111827]">
                   AI Escalation Matrix & Human-in-the-Loop Override
                 </h3>
                 <p className="text-xs text-[#6B7280]">

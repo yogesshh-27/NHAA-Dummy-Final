@@ -316,7 +316,7 @@ export const AdminDashboard: React.FC = () => {
   ).length
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#f8fafc] flex flex-col font-sans antialiased text-slate-800">
       {/* Officer Portal Navigation Bar */}
       <header className="bg-[#0b1f36] text-white border-b border-slate-700 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
@@ -324,14 +324,14 @@ export const AdminDashboard: React.FC = () => {
             <EmblemOfIndia className="h-10 w-auto text-amber-300" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-sm sm:text-base font-bold tracking-wide">
+                <span className="text-sm sm:text-base font-extrabold tracking-tight">
                   NHAA Nodal Officer Administration Console
                 </span>
-                <span className="text-[10px] bg-blue-700 text-blue-100 px-2 py-0.5 rounded font-mono font-semibold">
+                <span className="text-[10px] bg-blue-700 text-blue-100 px-2 py-0.5 rounded font-bold tracking-wide">
                   SECURE v2.4
                 </span>
               </div>
-              <span className="text-xs text-slate-300 block">
+              <span className="text-xs text-slate-300 block font-medium">
                 Department of Social Justice and Empowerment, Government of India
               </span>
             </div>
@@ -339,8 +339,8 @@ export const AdminDashboard: React.FC = () => {
 
           <div className="flex items-center gap-4">
             <div className="hidden md:flex flex-col text-right text-xs">
-              <span className="font-bold text-white">Shri A.K. Srivastava (IAS)</span>
-              <span className="text-slate-300">District Nodal Officer (Special Cell)</span>
+              <span className="font-bold text-white tracking-tight">Shri A.K. Srivastava (IAS)</span>
+              <span className="text-slate-300 font-medium">District Nodal Officer (Special Cell)</span>
             </div>
 
             <button
@@ -350,7 +350,7 @@ export const AdminDashboard: React.FC = () => {
                 localStorage.removeItem('nhaa_user')
                 navigate('/admin/login')
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-red-700 hover:bg-red-800 text-white text-xs font-semibold shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-red-700 hover:bg-red-800 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>Logout</span>
@@ -363,11 +363,11 @@ export const AdminDashboard: React.FC = () => {
       <div className="bg-[#122e4d] text-slate-200 text-xs py-2 px-4 border-b border-slate-700">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-4">
-            <span className="font-semibold text-amber-300">Active Jurisdiction:</span>
-            <span>Western Region Zone-1 (NCR & UP-West)</span>
+            <span className="font-bold text-amber-300">Active Jurisdiction:</span>
+            <span className="font-medium">Western Region Zone-1 (NCR & UP-West)</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 font-semibold">
             <Link to="/" className="text-blue-200 hover:text-white underline">
               Public Portal Homepage
             </Link>
@@ -385,16 +385,16 @@ export const AdminDashboard: React.FC = () => {
           <button
             type="button"
             onClick={() => handleSwitchTab('queue')}
-            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-t-md text-xs font-bold transition-all border-t border-x ${
+            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-t-md text-xs font-bold tracking-tight transition-all border-t border-x cursor-pointer ${
               activeTab === 'queue'
-                ? 'bg-white text-slate-900 border-slate-300 border-b-white -mb-[1px] shadow-2xs'
+                ? 'bg-white text-[#00274d] border-slate-300 border-b-white -mb-[1px] shadow-2xs font-extrabold'
                 : 'text-slate-600 hover:text-slate-900 border-transparent hover:bg-slate-100'
             }`}
           >
             <ListFilter className="w-4 h-4 text-blue-700" />
             <span>Atrocities Grievance & Triage Queue</span>
             {liveActiveCount > 0 && (
-              <span className="text-[10px] bg-red-100 text-red-800 border border-red-300 px-1.5 py-0.2 rounded font-mono font-bold animate-pulse">
+              <span className="text-[10px] bg-red-100 text-red-800 border border-red-300 px-1.5 py-0.2 rounded font-extrabold tracking-wide animate-pulse">
                 {liveActiveCount} LIVE
               </span>
             )}
@@ -403,15 +403,15 @@ export const AdminDashboard: React.FC = () => {
           <button
             type="button"
             onClick={() => handleSwitchTab('saathi')}
-            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-t-md text-xs font-bold transition-all border-t border-x ${
+            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-t-md text-xs font-bold tracking-tight transition-all border-t border-x cursor-pointer ${
               activeTab === 'saathi'
-                ? 'bg-white text-slate-900 border-slate-300 border-b-white -mb-[1px] shadow-2xs'
+                ? 'bg-white text-[#00274d] border-slate-300 border-b-white -mb-[1px] shadow-2xs font-extrabold'
                 : 'text-slate-600 hover:text-slate-900 border-transparent hover:bg-slate-100'
             }`}
           >
             <Brain className="w-4 h-4 text-purple-600" />
             <span>SAATHI-AI Live Intake Console</span>
-            <span className="text-[10px] bg-purple-100 text-purple-800 border border-purple-300 px-1.5 py-0.2 rounded font-mono font-semibold">
+            <span className="text-[10px] bg-purple-100 text-purple-800 border border-purple-300 px-1.5 py-0.2 rounded font-bold tracking-wide">
               Live Engine
             </span>
           </button>
@@ -432,109 +432,109 @@ export const AdminDashboard: React.FC = () => {
             {/* KPI Metrics */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               
-              <div className="bg-white border border-slate-300 rounded p-4 shadow-2xs">
+              <div className="bg-white border border-slate-300 rounded-xl p-4 sm:p-5 shadow-2xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-500 uppercase">Assigned Complaints</span>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Assigned Complaints</span>
                   <FileText className="w-5 h-5 text-blue-700" />
                 </div>
-                <div className="text-2xl font-extrabold text-slate-900 font-mono mt-2">
+                <div className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-2">
                   {dashboardStats.assigned_complaints}
                 </div>
-                <span className="text-[11px] text-slate-500 mt-0.5 block">
+                <span className="text-[11px] text-slate-500 mt-1 block font-medium">
                   {dashboardStats.total_db_cases} completed · {dashboardStats.total_live_sessions} live
                 </span>
               </div>
 
-              <div className="bg-red-50 border border-red-300 rounded p-4 shadow-2xs">
+              <div className="bg-red-50 border border-red-300 rounded-xl p-4 sm:p-5 shadow-2xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-red-700 uppercase">Emergency Rescues</span>
+                  <span className="text-xs font-bold text-red-700 uppercase tracking-wide">Emergency Rescues</span>
                   <AlertOctagon className="w-5 h-5 text-red-600 animate-pulse" />
                 </div>
-                <div className="text-2xl font-extrabold text-red-900 font-mono mt-2">
+                <div className="text-2xl sm:text-3xl font-black text-red-900 tracking-tight mt-2">
                   {dashboardStats.emergency_rescues > 0
                     ? `${dashboardStats.emergency_rescues} ACTIVE`
                     : '0'}
                 </div>
-                <span className="text-[11px] text-red-700 mt-0.5 block">
+                <span className="text-[11px] text-red-700 mt-1 block font-medium">
                   {dashboardStats.live_active_intakes > 0
                     ? `${dashboardStats.live_active_intakes} live caller intake(s) streaming`
                     : 'No active emergency intakes'}
                 </span>
               </div>
 
-              <div className="bg-white border border-slate-300 rounded p-4 shadow-2xs">
+              <div className="bg-white border border-slate-300 rounded-xl p-4 sm:p-5 shadow-2xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-500 uppercase">FIRs Tracked</span>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">FIRs Tracked</span>
                   <Building className="w-5 h-5 text-indigo-700" />
                 </div>
-                <div className="text-2xl font-extrabold text-slate-900 font-mono mt-2">
+                <div className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-2">
                   {dashboardStats.firs_tracked}
                 </div>
-                <span className="text-[11px] text-slate-500 mt-0.5 block">Section 3(1) & 3(2) PoA Act</span>
+                <span className="text-[11px] text-slate-500 mt-1 block font-medium">Section 3(1) & 3(2) PoA Act</span>
               </div>
 
-              <div className="bg-white border border-slate-300 rounded p-4 shadow-2xs">
+              <div className="bg-white border border-slate-300 rounded-xl p-4 sm:p-5 shadow-2xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-500 uppercase">Relief Disbursed</span>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Relief Disbursed</span>
                   <CheckCircle2 className="w-5 h-5 text-emerald-700" />
                 </div>
-                <div className="text-2xl font-extrabold text-emerald-800 font-mono mt-2">
+                <div className="text-2xl sm:text-3xl font-black text-emerald-800 tracking-tight mt-2">
                   {dashboardStats.relief_disbursed}
                 </div>
-                <span className="text-[11px] text-slate-500 mt-0.5 block">Direct Benefit Transfer (DBT)</span>
+                <span className="text-[11px] text-slate-500 mt-1 block font-medium">Direct Benefit Transfer (DBT)</span>
               </div>
 
             </div>
 
             {/* Triage & Management Queue */}
-            <div className="bg-white border border-slate-300 rounded-md shadow-xs overflow-hidden">
+            <div className="bg-white border border-slate-300 rounded-xl shadow-xs overflow-hidden">
               
               <div className="p-4 sm:p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <div className="flex items-center gap-2.5">
-                    <h2 className="text-base font-bold text-slate-900">
+                    <h2 className="text-base sm:text-lg font-extrabold text-[#00274d] tracking-tight">
                       Atrocities Grievance & Distress Triage Queue
                     </h2>
                     {liveActiveCount > 0 && (
-                      <span className="inline-flex items-center gap-1 text-[10px] bg-red-600 text-white font-mono font-bold px-2 py-0.5 rounded-full animate-pulse">
+                      <span className="inline-flex items-center gap-1 text-[10px] bg-red-600 text-white font-extrabold tracking-wide px-2 py-0.5 rounded-full animate-pulse">
                         <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
                         {liveActiveCount} Live Active
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 mt-0.5">
                     Incoming citizen cases under the SC/ST (Prevention of Atrocities) Act with live intake metadata
                   </p>
                 </div>
 
                 {/* Filter Tabs and Refresh */}
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded border border-slate-200 text-xs">
+                  <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs">
                     <button
                       type="button"
                       onClick={() => setSelectedStatus('all')}
-                      className={`px-3 py-1 rounded font-medium ${selectedStatus === 'all' ? 'bg-blue-800 text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                      className={`px-3 py-1 rounded font-medium transition-all ${selectedStatus === 'all' ? 'bg-[#003366] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
                     >
                       All Cases ({allCases.length})
                     </button>
                     <button
                       type="button"
                       onClick={() => setSelectedStatus('urgent')}
-                      className={`px-3 py-1 rounded font-medium ${selectedStatus === 'urgent' ? 'bg-red-700 text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                      className={`px-3 py-1 rounded font-medium transition-all ${selectedStatus === 'urgent' ? 'bg-red-700 text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
                     >
                       Distress / SOS
                     </button>
                     <button
                       type="button"
                       onClick={() => setSelectedStatus('pending')}
-                      className={`px-3 py-1 rounded font-medium ${selectedStatus === 'pending' ? 'bg-blue-800 text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                      className={`px-3 py-1 rounded font-medium transition-all ${selectedStatus === 'pending' ? 'bg-[#003366] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
                     >
                       Under Investigation
                     </button>
                     <button
                       type="button"
                       onClick={() => setSelectedStatus('resolved')}
-                      className={`px-3 py-1 rounded font-medium ${selectedStatus === 'resolved' ? 'bg-emerald-700 text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                      className={`px-3 py-1 rounded font-medium transition-all ${selectedStatus === 'resolved' ? 'bg-emerald-700 text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
                     >
                       Disposed
                     </button>
@@ -544,7 +544,7 @@ export const AdminDashboard: React.FC = () => {
                     type="button"
                     onClick={handleManualRefresh}
                     title="Refresh live queue from backend"
-                    className="p-1.5 rounded border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+                    className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
                   >
                     <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-blue-600' : ''}`} />
                   </button>
@@ -554,7 +554,7 @@ export const AdminDashboard: React.FC = () => {
               {/* Table */}
               <div className="overflow-x-auto">
                 <table className="w-full text-xs text-left border-collapse">
-                  <thead className="bg-slate-50 text-slate-700 uppercase font-bold border-b border-slate-200">
+                  <thead className="bg-slate-50 text-slate-700 uppercase font-extrabold text-xs tracking-wider border-b border-slate-200">
                     <tr>
                       <th className="p-3">Reference URN / Session</th>
                       <th className="p-3">Victim / Intake Date-Time</th>
@@ -570,7 +570,7 @@ export const AdminDashboard: React.FC = () => {
                         <td colSpan={6} className="text-center py-12 text-slate-500 bg-white">
                           <div className="flex flex-col items-center justify-center gap-2">
                             <FileText className="w-8 h-8 text-slate-300" />
-                            <span className="text-sm font-semibold text-slate-700">No Cases In Triage Queue</span>
+                            <span className="text-sm font-bold text-slate-700">No Cases In Triage Queue</span>
                             <span className="text-xs text-slate-400">
                               {selectedStatus !== 'all'
                                 ? `No cases match the selected filter "${selectedStatus}".`
@@ -590,9 +590,9 @@ export const AdminDashboard: React.FC = () => {
                           }`}
                         >
                           {/* Reference URN & Session ID */}
-                          <td className="p-3 font-mono">
+                          <td className="p-3">
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="font-bold text-blue-900">{c.urn}</span>
+                              <span className="font-extrabold text-[#003366] tracking-tight">{c.urn}</span>
                               {c.isLive && (
                                 <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 border border-purple-300 text-[9px] font-bold uppercase animate-pulse">
                                   <span className="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
@@ -600,21 +600,21 @@ export const AdminDashboard: React.FC = () => {
                                 </span>
                               )}
                             </div>
-                            <span className="text-[10px] text-slate-400 font-mono block mt-0.5">
+                            <span className="text-[11px] text-slate-500 font-medium block mt-0.5">
                               ID: {c.sessionId || c.urn.slice(-8)}
                             </span>
                           </td>
 
                           {/* Victim & Exact Intake Timestamp */}
-                          <td className="p-3 font-medium text-slate-900">
-                            <div className="font-bold">{c.victim}</div>
-                            <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1 mt-0.5">
-                              <Clock className="w-2.5 h-2.5 text-slate-400 shrink-0" />
+                          <td className="p-3 text-slate-900">
+                            <div className="font-bold text-slate-900">{c.victim}</div>
+                            <div className="text-[11px] text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                              <Clock className="w-3 h-3 text-slate-400 shrink-0" />
                               <span>{formatIntakeDateTime(c.intakeTimestampExact, c.date)}</span>
                             </div>
                             {c.isLive && (
-                              <div className="text-[10px] text-emerald-700 font-semibold flex items-center gap-1 mt-0.5">
-                                <Activity className="w-2.5 h-2.5 shrink-0 animate-pulse text-emerald-600" />
+                              <div className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1 mt-0.5">
+                                <Activity className="w-3 h-3 shrink-0 animate-pulse text-emerald-600" />
                                 <span>Active: {formatLastActive(c.lastActivityAt, c.lastActivitySeconds)}</span>
                               </div>
                             )}
@@ -622,9 +622,9 @@ export const AdminDashboard: React.FC = () => {
 
                           {/* Alleged Offence / Distress Factor */}
                           <td className="p-3 text-slate-700 max-w-xs">
-                            <div className="line-clamp-2">{c.type}</div>
+                            <div className="line-clamp-2 text-xs leading-relaxed">{c.type}</div>
                             {c.sviScore !== undefined && c.sviScore > 0 && (
-                              <span className="inline-block mt-1 text-[10px] px-1.5 py-0.2 rounded font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                              <span className="inline-block mt-1 text-[10px] px-2 py-0.5 rounded font-bold bg-amber-50 text-amber-800 border border-amber-200 tracking-tight">
                                 SVI {c.sviScore}/100 ({c.sviLabel || 'LOW'})
                               </span>
                             )}
@@ -633,22 +633,22 @@ export const AdminDashboard: React.FC = () => {
                           {/* Priority */}
                           <td className="p-3">
                             {c.priority === 'CRITICAL' && (
-                              <span className="px-2 py-0.5 rounded bg-red-600 text-white font-extrabold text-[10px] uppercase animate-pulse">
+                              <span className="px-2.5 py-1 rounded bg-red-600 text-white font-extrabold text-[10px] uppercase tracking-wide animate-pulse">
                                 CRITICAL SOS
                               </span>
                             )}
                             {c.priority === 'HIGH' && (
-                              <span className="px-2 py-0.5 rounded bg-amber-500 text-white font-bold text-[10px] uppercase">
+                              <span className="px-2.5 py-1 rounded bg-amber-500 text-white font-bold text-[10px] uppercase tracking-wide">
                                 HIGH
                               </span>
                             )}
                             {c.priority === 'MEDIUM' && (
-                              <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold text-[10px] uppercase">
+                              <span className="px-2.5 py-1 rounded bg-blue-100 text-blue-800 font-bold text-[10px] uppercase tracking-wide">
                                 MEDIUM
                               </span>
                             )}
                             {c.priority === 'RESOLVED' && (
-                              <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] uppercase">
+                              <span className="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] uppercase tracking-wide">
                                 RESOLVED
                               </span>
                             )}
@@ -658,32 +658,32 @@ export const AdminDashboard: React.FC = () => {
                           <td className="p-3">
                             <div className="flex items-center gap-1.5 mb-1">
                               {c.connectionStatus === 'Active' && (
-                                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-[10px] border border-blue-300">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-[10px] border border-blue-300">
                                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping"></span>
                                   Active Stream
                                 </span>
                               )}
                               {c.connectionStatus === 'Online' && (
-                                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold text-[10px] border border-emerald-300">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold text-[10px] border border-emerald-300">
                                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                                   Online
                                 </span>
                               )}
                               {c.connectionStatus === 'Disconnected' && (
-                                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-semibold text-[10px] border border-amber-300">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-semibold text-[10px] border border-amber-300">
                                   Disconnected
                                 </span>
                               )}
                               {(!c.connectionStatus || c.connectionStatus === 'Completed') && (
-                                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium text-[10px]">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold text-[10px]">
                                   Completed
                                 </span>
                               )}
                             </div>
                             <div className="font-semibold text-slate-800 text-[11px]">{c.status}</div>
                             {c.clientIp && (
-                              <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1 mt-0.5">
-                                <Shield className="w-2.5 h-2.5 text-blue-600 shrink-0" />
+                              <div className="text-[11px] text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                                <Shield className="w-3 h-3 text-blue-600 shrink-0" />
                                 <span>IP: {c.clientIp}</span>
                               </div>
                             )}
@@ -696,9 +696,9 @@ export const AdminDashboard: React.FC = () => {
                                 type="button"
                                 onClick={() => handleOpenDossier(c)}
                                 title="View Dossier, Location, Metadata & Audit"
-                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#0f3460] hover:bg-[#162447] text-white text-[11px] font-semibold transition-colors cursor-pointer"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#003366] hover:bg-[#002244] text-white text-xs font-bold transition-all cursor-pointer shadow-2xs active:scale-95"
                               >
-                                <Eye className="w-3 h-3" />
+                                <Eye className="w-3.5 h-3.5" />
                                 <span>Dossier / View</span>
                               </button>
                             </div>
@@ -710,11 +710,11 @@ export const AdminDashboard: React.FC = () => {
                 </table>
               </div>
 
-              <div className="p-3 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+              <div className="p-3.5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-2">
                 <div>
                   Showing {filteredCases.length} records. Automated synchronization with State Police CCTNS network active.
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-600">
+                <div className="flex items-center gap-1.5 text-xs font-medium text-slate-700">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span>Backend Synced {lastSyncTime ? `at ${lastSyncTime}` : 'live'}</span>
                 </div>
@@ -728,20 +728,20 @@ export const AdminDashboard: React.FC = () => {
       {/* Sensitive Technical Intake Metadata Modal */}
       {selectedMetaCase && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-2xl border border-slate-300 max-w-2xl w-full overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white rounded-xl shadow-2xl border border-slate-300 max-w-2xl w-full overflow-hidden animate-in fade-in zoom-in-95 duration-150">
             {/* Modal Header */}
             <div className="bg-[#0b1f36] text-white px-5 py-3.5 flex items-center justify-between border-b border-slate-700">
               <div className="flex items-center gap-2.5">
                 <Eye className="w-4 h-4 text-cyan-400" />
                 <div>
-                  <h3 className="text-sm font-bold tracking-wide">Case Dossier & Technical Audit</h3>
-                  <p className="text-[11px] text-slate-300">Location, Jurisdiction & Intake Metadata — Nodal Officer View</p>
+                  <h3 className="text-base font-extrabold text-white tracking-tight">Case Dossier &amp; Technical Audit</h3>
+                  <p className="text-[11px] text-slate-300 font-medium">Location, Jurisdiction &amp; Intake Metadata — Nodal Officer View</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedMetaCase(null)}
-                className="p-1 rounded text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -750,18 +750,18 @@ export const AdminDashboard: React.FC = () => {
             {/* Modal Body */}
             <div className="p-5 space-y-4 max-h-[80vh] overflow-y-auto text-xs">
               {/* Top Banner with Case URN and Status */}
-              <div className="p-3 bg-slate-50 border border-slate-200 rounded flex flex-wrap items-center justify-between gap-2">
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">Case Reference</span>
-                  <span className="text-sm font-extrabold font-mono text-blue-900">{selectedMetaCase.urn}</span>
-                  <span className="text-[11px] text-slate-600 ml-2">({selectedMetaCase.victim})</span>
+                  <span className="text-sm font-extrabold text-[#003366] tracking-tight">{selectedMetaCase.urn}</span>
+                  <span className="text-[11px] text-slate-600 font-medium ml-2">({selectedMetaCase.victim})</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] px-2 py-0.5 rounded font-mono font-bold bg-blue-100 text-blue-800 border border-blue-300">
+                  <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-blue-100 text-blue-800 border border-blue-300">
                     Status: {selectedMetaCase.connectionStatus || 'Completed'}
                   </span>
                   {selectedMetaCase.isLive && (
-                    <span className="text-[10px] px-2 py-0.5 rounded font-mono font-bold bg-purple-100 text-purple-800 border border-purple-300 animate-pulse">
+                    <span className="text-[10px] px-2 py-0.5 rounded font-extrabold tracking-wide bg-purple-100 text-purple-800 border border-purple-300 animate-pulse">
                       LIVE SESSION
                     </span>
                   )}
@@ -769,10 +769,10 @@ export const AdminDashboard: React.FC = () => {
               </div>
 
               {/* Location & Jurisdiction */}
-              <div className="p-3 rounded border border-indigo-200 bg-indigo-50/60">
+              <div className="p-3 rounded-lg border border-indigo-200 bg-indigo-50/60">
                 <div className="flex items-center gap-1.5 mb-2">
                   <Building className="w-3.5 h-3.5 text-indigo-700" />
-                  <span className="text-[11px] font-bold text-indigo-900 uppercase tracking-wide">Location & Jurisdiction</span>
+                  <span className="text-[11px] font-bold text-indigo-900 uppercase tracking-wide">Location &amp; Jurisdiction</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                   <div>
@@ -797,7 +797,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                 </div>
                 {selectedMetaCase.rawCase?.location && (
-                  <div className="mt-2 text-[10px] text-indigo-800 font-mono bg-indigo-100 rounded px-2 py-1">
+                  <div className="mt-2 text-[11px] text-indigo-900 font-medium bg-indigo-100 rounded px-2.5 py-1">
                     {[
                       selectedMetaCase.rawCase.location.street,
                       selectedMetaCase.rawCase.location.area,
@@ -812,17 +812,17 @@ export const AdminDashboard: React.FC = () => {
               {/* Grid of Key Technical Metadata */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Backend Request IP */}
-                <div className="p-3 rounded border border-blue-200 bg-blue-50/50">
+                <div className="p-3 rounded-lg border border-blue-200 bg-blue-50/50">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold text-blue-900 flex items-center gap-1.5">
                       <Shield className="w-3.5 h-3.5 text-blue-700" />
                       <span>Caller / Client Public IP</span>
                     </span>
-                    <span className="text-[9px] px-1.5 py-0.2 rounded font-mono bg-blue-200 text-blue-900 font-semibold">
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-200 text-blue-900 font-bold">
                       Backend Verified
                     </span>
                   </div>
-                  <div className="text-lg font-extrabold font-mono text-slate-900 mt-1">
+                  <div className="text-base font-extrabold text-slate-900 mt-1 tracking-tight">
                     {selectedMetaCase.clientIp || '127.0.0.1'}
                   </div>
                   <p className="text-[10px] text-slate-500 mt-0.5">
@@ -831,46 +831,46 @@ export const AdminDashboard: React.FC = () => {
                 </div>
 
                 {/* Exact Intake Timestamp */}
-                <div className="p-3 rounded border border-slate-200 bg-slate-50">
+                <div className="p-3 rounded-lg border border-slate-200 bg-slate-50">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5 text-slate-600" />
                       <span>Exact Intake Date-Time</span>
                     </span>
-                    <span className="text-[9px] px-1.5 py-0.2 rounded font-mono bg-slate-200 text-slate-800 font-semibold">
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-800 font-bold">
                       ISO-8601
                     </span>
                   </div>
-                  <div className="text-xs font-bold font-mono text-slate-900 mt-1">
+                  <div className="text-xs font-bold text-slate-900 mt-1 tracking-tight">
                     {formatIntakeDateTime(selectedMetaCase.intakeTimestampExact, selectedMetaCase.date)}
                   </div>
-                  <div className="text-[10px] text-slate-500 font-mono mt-0.5 truncate">
+                  <div className="text-[10px] text-slate-500 font-medium mt-0.5 truncate">
                     Raw: {selectedMetaCase.intakeTimestampExact || selectedMetaCase.date}
                   </div>
                 </div>
 
                 {/* Session ID / Reference ID */}
-                <div className="p-3 rounded border border-slate-200 bg-slate-50">
+                <div className="p-3 rounded-lg border border-slate-200 bg-slate-50">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
                       <Server className="w-3.5 h-3.5 text-slate-600" />
                       <span>Session / Reference ID</span>
                     </span>
                   </div>
-                  <div className="text-sm font-extrabold font-mono text-indigo-900 mt-1">
+                  <div className="text-sm font-extrabold text-[#003366] tracking-tight mt-1">
                     {selectedMetaCase.sessionId || selectedMetaCase.urn}
                   </div>
                   <p className="text-[10px] text-slate-500 mt-0.5">
-                    Unique backend intake handle for streaming & triage reconciliation.
+                    Unique backend intake handle for streaming &amp; triage reconciliation.
                   </p>
                 </div>
 
                 {/* Live Connection & Activity */}
-                <div className="p-3 rounded border border-slate-200 bg-slate-50">
+                <div className="p-3 rounded-lg border border-slate-200 bg-slate-50">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
                       <Activity className="w-3.5 h-3.5 text-slate-600" />
-                      <span>Connection & Last Activity</span>
+                      <span>Connection &amp; Last Activity</span>
                     </span>
                   </div>
                   <div className="text-xs font-bold text-slate-900 mt-1 flex items-center gap-1.5">
@@ -878,36 +878,39 @@ export const AdminDashboard: React.FC = () => {
                     <span className="text-slate-400">•</span>
                     <span className="text-emerald-700">{formatLastActive(selectedMetaCase.lastActivityAt, selectedMetaCase.lastActivitySeconds)}</span>
                   </div>
-                  <p className="text-[10px] text-slate-500 mt-0.5 font-mono truncate">
+                  <p className="text-[10px] text-slate-500 mt-0.5 font-medium truncate">
                     Last: {selectedMetaCase.lastActivityAt || 'Finalized'}
                   </p>
                 </div>
               </div>
 
               {/* Device & User-Agent Information */}
-              <div className="p-3 rounded border border-slate-200 bg-slate-50">
+              <div className="p-3 rounded-lg border border-slate-200 bg-slate-50">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
                     <Laptop className="w-3.5 h-3.5 text-slate-600" />
-                    <span>Browser & Device Environment</span>
+                    <span>Browser &amp; Device Environment</span>
                   </span>
                   <span className="text-[10px] font-semibold text-slate-700">
                     {parseUserAgentSummary(selectedMetaCase.userAgent)}
                   </span>
                 </div>
-                <div className="bg-slate-900 text-slate-200 p-2.5 rounded font-mono text-[10px] break-all border border-slate-700">
+                <div className="bg-slate-900 text-slate-200 p-2.5 rounded-lg text-[10px] break-all border border-slate-700 font-mono">
                   {selectedMetaCase.userAgent || 'No User-Agent header supplied'}
                 </div>
               </div>
 
               {/* Officer Decision & Case Management Action */}
-              <div className="p-4 rounded border-2 border-blue-600 bg-blue-50/50 space-y-3">
+              <div className="p-4 rounded-xl border-2 border-blue-600 bg-blue-50/50 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-blue-900 flex items-center gap-1.5 uppercase tracking-wide">
                     <Shield className="w-4 h-4 text-blue-700" />
-                    <span>Officer Triage Action & Directives</span>
+                    <span>Officer Triage Action &amp; Directives</span>
                   </span>
-                  <span className="text-[10px] bg-blue-200 text-blue-900 px-2 py-0.5 rounded font-mono font-bold">
+                  <span className="text-[10px] bg-blue-200 text-blue-900 px-2 py-0.5 rounded font-bold">
+                    Official CCTNS Registry
+                  </span>
+                </div>
                     Official CCTNS Registry
                   </span>
                 </div>

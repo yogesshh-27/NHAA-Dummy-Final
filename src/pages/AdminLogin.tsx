@@ -87,7 +87,7 @@ export const AdminLogin: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#fafbfc] text-slate-800 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-blue-100">
+    <div className="min-h-screen bg-[#fafbfc] text-slate-800 font-sans antialiased flex flex-col justify-between relative overflow-x-hidden selection:bg-blue-100">
       
       {/* ── Top Bar with Return link ── */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-6 pb-2 flex items-center justify-between z-10">

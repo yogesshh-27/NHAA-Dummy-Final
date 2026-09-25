@@ -997,7 +997,7 @@ export function LiveSessionView({
       {/* 2. Main Page Title Header */}
       <div className="flex items-center justify-between pb-1 border-b border-[#D1D5DB]">
         <div>
-          <h2 className="text-lg font-bold font-serif-header text-[#111827] tracking-tight">
+          <h2 className="text-lg font-bold text-[#111827] tracking-tight">
             Live Call Interaction (Engine 1)
           </h2>
           <p className="text-xs text-[#6B7280]">
@@ -1283,7 +1283,7 @@ export function LiveSessionView({
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-[#111827] font-medium font-serif-header">
+                        <p className="text-xs text-[#111827] font-medium">
                           "{entry.text}"
                         </p>
                       </div>
@@ -1300,7 +1300,7 @@ export function LiveSessionView({
                         </span>
                         <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#0E7C7B] text-white font-mono">LIVE STT</span>
                       </div>
-                      <p className="text-xs text-[#111827] font-medium italic font-serif-header">
+                      <p className="text-xs text-[#111827] font-medium italic">
                         "{interimText}"
                       </p>
                     </div>
@@ -1545,7 +1545,7 @@ export function LiveSessionView({
 
             <div className="p-2.5 bg-white rounded-lg border border-slate-200 text-xs space-y-1">
               <span className="font-bold text-[10px] uppercase text-slate-500">Synthesized Case Summary:</span>
-              <p className="text-xs text-slate-900 leading-relaxed font-serif-header">{aiAssistance.summary}</p>
+              <p className="text-xs text-slate-900 leading-relaxed">{aiAssistance.summary}</p>
             </div>
 
             <div className="space-y-1.5">
@@ -1578,7 +1578,7 @@ export function LiveSessionView({
             <div className="text-xs font-bold text-[#111827]">
               Generated Case Brief ({completedSummary.brief_source}):
             </div>
-            <p className="text-xs text-[#111827] leading-relaxed font-serif-header">
+            <p className="text-xs text-[#111827] leading-relaxed">
               {completedSummary.case_brief}
             </p>
           </div>

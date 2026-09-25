@@ -33,11 +33,27 @@
   body {
     margin: 0;
     padding: 0;
+    font-family: var(--font-sans);
     background-color: #f8fafc;
     min-height: 100vh;
     color: #1e293b;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Ensure buttons, inputs, selects, textareas and tables inherit the exact Lexend font system */
+  button, input, optgroup, select, textarea, table, th, td {
+    font-family: inherit;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+  }
+}
+
+/* Force any legacy serif headers to use the Lexend design font */
+.font-serif-header {
+  font-family: var(--font-sans) !important;
 }
 
 /* Government portal specific details */
