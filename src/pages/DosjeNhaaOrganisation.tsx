@@ -20,6 +20,7 @@ import {
   ArrowRight,
   Scale,
   HeartHandshake,
+  Sparkles,
 } from 'lucide-react'
 
 export const DosjeNhaaOrganisation: React.FC = () => {
@@ -129,8 +130,44 @@ export const DosjeNhaaOrganisation: React.FC = () => {
                 A Constitutional Body under Article 338 of the Constitution of India. The Commission is established with a view to provide safeguards against the exploitation of Scheduled Castes and to protect and promote their social, educational, economic and cultural interests.
               </div>
 
-              {/* ── Exact White Action Buttons matching official DOSJE website ── */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              {/* ── HIGHLIGHTED PRIMARY ACTION: Stress & Trauma Assessment (Main Focus) ── */}
+              <div className="pt-2">
+                <Link
+                  to="/stress-trauma-assessment"
+                  id="hero-btn-trauma-assessment"
+                  className="group relative inline-flex items-center gap-3.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 text-slate-950 font-black shadow-2xl shadow-amber-950/30 hover:shadow-amber-400/60 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 ring-4 ring-amber-300/80 border-2 border-white cursor-pointer"
+                  title="Confidential Stress & Trauma Assessment - Recommended First Step"
+                >
+                  {/* Glowing live ping badge */}
+                  <span className="absolute -top-2.5 -right-2 flex h-5 w-5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-5 w-5 bg-amber-500 border-2 border-white items-center justify-center text-[10px] text-slate-950 font-black">!</span>
+                  </span>
+
+                  <div className="w-10 h-10 rounded-xl bg-slate-950 text-amber-300 flex items-center justify-center shrink-0 shadow-md group-hover:rotate-6 transition-transform">
+                    <Brain className="w-5 h-5" />
+                  </div>
+
+                  <div className="flex flex-col text-left">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-950 text-amber-300">
+                        CLICK HERE FIRST • CONFIDENTIAL
+                      </span>
+                      <span className="text-[11px] font-extrabold text-slate-900 flex items-center gap-1">
+                        <Sparkles className="w-3 h-3 text-amber-700 fill-amber-700" />
+                        AI Diagnostic Tool
+                      </span>
+                    </div>
+                    <span className="text-base sm:text-lg font-black tracking-tight text-slate-950 flex items-center gap-2 mt-0.5">
+                      <span>Stress &amp; Trauma Assessment</span>
+                      <span className="text-xl font-black group-hover:translate-x-1.5 transition-transform text-slate-950">→</span>
+                    </span>
+                  </div>
+                </Link>
+              </div>
+
+              {/* ── Official Action Buttons matching official DOSJE website ── */}
+              <div className="flex flex-wrap items-center gap-3 pt-1">
                 <Link
                   to="/register-grievance"
                   id="hero-btn-register-grievance"
