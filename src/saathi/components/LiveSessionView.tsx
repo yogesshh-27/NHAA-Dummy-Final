@@ -541,7 +541,7 @@ export function LiveSessionView({
       console.log("[LiveSessionView] Socket.io connected to phone transcript server, ID:", socket.id);
     });
 
-    socket.on("connect_error", (error) => {
+    socket.on("connect_error", (error: any) => {
       console.warn("[LiveSessionView] Socket.io connection error:", error.message);
     });
 
