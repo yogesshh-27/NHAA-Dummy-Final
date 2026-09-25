@@ -1,13 +1,26 @@
 import React from 'react'
-import { FileSignature, UserCheck, FileSearch, Brain } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { FileSignature, UserCheck, FileSearch, Brain, ArrowLeft } from 'lucide-react'
 import { ServiceCard } from '../components/ServiceCard'
 
 export const Dashboard: React.FC = () => {
   return (
-    <div className="space-y-12 max-w-[1240px] mx-auto py-2">
+    <div className="space-y-10 max-w-[1240px] mx-auto py-2">
       
+      {/* Return to Ministry Portal Home */}
+      <div className="flex items-center justify-between pb-1 border-b border-slate-200">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#00274d] font-semibold transition-colors group"
+        >
+          <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
+          <span>← Back to Ministry Portal (NHAA - 14566)</span>
+        </Link>
+        <span className="text-[11px] font-bold text-slate-400">Operations Dashboard</span>
+      </div>
+
       {/* Dashboard Title & Subtitle matching official NHAPOA portal */}
-      <div className="text-center space-y-2 pt-2">
+      <div className="text-center space-y-2 pt-1">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-[#00274d] tracking-tight">
           National Helpline Against Atrocities (NHAA)
         </h1>

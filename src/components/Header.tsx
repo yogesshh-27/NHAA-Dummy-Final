@@ -36,15 +36,17 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
         {/* Left: Hamburger + Emblem + Ministry text */}
         <div className="flex items-center gap-3 sm:gap-4">
           
-          {/* Hamburger Menu button */}
-          <button
-            type="button"
-            onClick={onToggleSidebar}
-            className="p-1.5 rounded text-slate-700 hover:bg-slate-100 cursor-pointer"
-            aria-label="Toggle navigation menu"
-          >
-            <Menu className="w-6 h-6 text-[#003366]" />
-          </button>
+          {/* Hamburger Menu button (shown on Dashboard & tool pages that use sidebar) */}
+          {location.pathname !== '/' && (
+            <button
+              type="button"
+              onClick={onToggleSidebar}
+              className="p-1.5 rounded text-slate-700 hover:bg-slate-100 cursor-pointer"
+              aria-label="Toggle navigation menu"
+            >
+              <Menu className="w-6 h-6 text-[#003366]" />
+            </button>
+          )}
 
           {/* Ashoka Lion Emblem */}
           <Link to="/" className="flex-shrink-0">

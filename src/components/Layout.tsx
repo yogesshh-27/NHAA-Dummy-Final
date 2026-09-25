@@ -32,12 +32,9 @@ export const Layout: React.FC = () => {
 
       {/* Main Container: Full width for Ministry Portal Home, Sidebar layout for Tools */}
       {isMinistryHomePage ? (
-        <>
-          <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
-          <main id="main-content" tabIndex={-1} className="flex-1 w-full bg-[#f8fafc]">
-            <Outlet />
-          </main>
-        </>
+        <main id="main-content" tabIndex={-1} className="flex-1 w-full bg-[#f8fafc]">
+          <Outlet />
+        </main>
       ) : (
         <div className="flex-1 flex w-full max-w-[1440px] mx-auto">
           {/* Left Sidebar */}
