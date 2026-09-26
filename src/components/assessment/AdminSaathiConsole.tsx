@@ -62,7 +62,7 @@ export const AdminSaathiConsole: React.FC<AdminSaathiConsoleProps> = ({
           <div>
             <div className="flex items-center gap-2.5 flex-wrap">
               <h1 className="text-lg font-bold tracking-tight text-white">
-                SAATHI-AI Live Intake & Triage Console
+                Aasra AI Live Intake & Triage Console
               </h1>
               <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded font-mono font-bold uppercase">
                 Dual-Engine AI Active
@@ -243,7 +243,7 @@ export const AdminSaathiConsole: React.FC<AdminSaathiConsoleProps> = ({
           <div className="border-b border-slate-200 pb-4 flex items-center justify-between">
             <div>
               <h2 className="text-base font-bold text-slate-900">
-                SAATHI-AI Clinical & Risk Assessment Dossier
+                Aasra AI Clinical & Risk Assessment Dossier
               </h2>
               <p className="text-xs text-slate-500">
                 Generated from live audio telemetry, semantic parsing, and SVI scoring engine.

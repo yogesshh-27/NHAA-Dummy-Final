@@ -867,7 +867,7 @@ def _format_case_record(c: LiveCase) -> dict:
         transcript_utterances.append({
             "time": "+0:00s",
             "speaker": "Caller",
-            "text": "Live call audio streamed and analyzed by SAATHI-AI Engine 1.",
+            "text": "Live call audio streamed and analyzed by Aasra AI Engine 1.",
             "isFlagged": False,
         })
 

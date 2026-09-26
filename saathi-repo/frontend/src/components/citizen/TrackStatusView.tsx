@@ -103,7 +103,7 @@ const SAMPLE_DOSSIERS: Record<string, CaseDossier> = {
     state: "Uttar Pradesh",
     district: "Aligarh (Atrauli)",
     offence: "Mob encirclement & immediate physical threat",
-    officerRemarks: "Dial 112 PCR Van Unit 4 dispatched with 4 armed personnel. High priority SOS triage escalated by SAATHI-AI Engine 1.",
+    officerRemarks: "Dial 112 PCR Van Unit 4 dispatched with 4 armed personnel. High priority SOS triage escalated by Aasra AI Engine 1.",
     firNumber: "Emergency Zero-FIR #89/26",
     reliefDisbursed: "Emergency medical transport sanctioned",
     milestones: [

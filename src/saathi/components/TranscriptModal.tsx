@@ -166,7 +166,7 @@ export function TranscriptModal({
 
         {/* Footer */}
         <div className="p-4 border-t border-[#E8EAEE] flex items-center justify-between text-xs text-[#8A8F98] bg-[#FFFFFF]">
-          <span>Integrated SAATHI-AI Engine • PII automatically redacted</span>
+          <span>Integrated Aasra AI Engine • PII automatically redacted</span>
           <button
             onClick={onClose}
             className="px-4 py-1.5 text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 rounded font-semibold transition-colors"

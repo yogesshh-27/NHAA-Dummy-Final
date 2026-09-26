@@ -90,7 +90,7 @@ SAATHI-AI separates live call processing from deep retrospective analysis throug
 ## 📂 5. Project Structure
 
 ```text
-Saathi Ai/
+Aasra AI/
 ├── frontend/                  # Next.js 16 (App Router, TypeScript, Tailwind CSS)
 │   ├── src/
 │   │   ├── app/               # Next.js pages and layouts

@@ -58,7 +58,7 @@ export function StressAssessmentView({ onBack, onNavigateToGrievance }: StressAs
               Stress &amp; Trauma Psychological Assessment
             </h1>
             <span className="text-[10px] font-extrabold bg-[#2563EB] text-white px-2 py-0.5 rounded-md uppercase">
-              SAATHI-AI SVI
+              Aasra AI SVI
             </span>
           </div>
           <p className="text-xs sm:text-[13px] text-[#64748B]">

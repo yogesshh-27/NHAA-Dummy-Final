@@ -1,4 +1,4 @@
-// Curated safety training corpus for the Saathi AI safety classifier.
+// Curated safety training corpus for the Aasra AI safety classifier.
 // Labels: 1 = safety_threat (immediate physical danger / self-harm / weapon / attack),
 //         0 = safe (general distress, harassment discussion, mental health, etc.)
 // Language mix: English, Hinglish (Roman-script Hindi), Hindi (Devanagari).

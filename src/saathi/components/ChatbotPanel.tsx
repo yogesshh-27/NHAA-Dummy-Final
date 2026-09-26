@@ -32,7 +32,7 @@ export function ChatbotPanel({ currentCase }: ChatbotPanelProps) {
     {
       id: "welcome-1",
       sender: "assistant",
-      text: "Namaste! I am your SAATHI-AI Assistant. How can I help you today? Ask me any question about helpline support, safety guidance, or platform features.",
+      text: "Namaste! I am your Aasra AI Assistant. How can I help you today? Ask me any question about helpline support, safety guidance, or platform features.",
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -151,7 +151,7 @@ export function ChatbotPanel({ currentCase }: ChatbotPanelProps) {
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-xs font-bold tracking-wide">SAATHI-AI Assistant</h3>
+                <h3 className="text-xs font-bold tracking-wide">Aasra AI Assistant</h3>
                 <p className="text-[10px] text-[#A0AEC0]">Helpline & Decision Support Assistant</p>
               </div>
             </div>

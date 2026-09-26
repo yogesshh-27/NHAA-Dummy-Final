@@ -372,7 +372,7 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-[#1E40AF]" />
               <span>
-                SAMBAL &bull; SAATHI-AI • Explainable Decision Support Engine • Human Oversight Mandatory
+                SAMBAL &bull; Aasra AI • Explainable Decision Support Engine • Human Oversight Mandatory
               </span>
             </div>
             <div className="text-[#94A3B8] font-medium font-mono text-[10.5px]">
@@ -382,7 +382,7 @@ export default function Home() {
         </main>
       </div>
 
-      {/* Floating 24x7 SAMBAL / SAATHI-AI Assistant */}
+      {/* Floating 24x7 SAMBAL / Aasra AI Assistant */}
       <ChatbotPanel currentCase={currentCase} />
     </div>
   );

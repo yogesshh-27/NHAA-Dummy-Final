@@ -1,5 +1,5 @@
 """
-Saathi AI Safety Model Trainer
+Aasra AI Safety Model Trainer
 ==============================
 
 Trains a TF-IDF + Logistic Regression pipeline that classifies free-form

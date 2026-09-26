@@ -10,7 +10,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SAMBAL (NHAA 2.0) • SAATHI-AI | Decision-Support System",
+  title: "SAMBAL (NHAA 2.0) • Aasra AI | Decision-Support System",
   description: "AI-assisted decision-support platform for helpline operators (SIH26093)",
 };
 

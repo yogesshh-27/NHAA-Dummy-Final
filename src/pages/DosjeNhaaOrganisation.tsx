@@ -539,7 +539,7 @@ export const DosjeNhaaOrganisation: React.FC = () => {
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">Official Nodal Officer Portal</h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Restricted government officer console for District Magistrates, SPs, and Nodal Officers with SAATHI AI co-pilot integration.
+                  Restricted government officer console for District Magistrates, SPs, and Nodal Officers with Aasra AI co-pilot integration.
                 </p>
               </div>
               <div className="pt-5 mt-4 border-t border-slate-100">

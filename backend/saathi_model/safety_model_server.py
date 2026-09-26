@@ -1,5 +1,5 @@
 """
-Saathi AI Safety Model — Python sidecar
+Aasra AI Safety Model — Python sidecar
 =======================================
 
 A tiny standalone HTTP service that loads backend/saathi_model/safety_model.pkl

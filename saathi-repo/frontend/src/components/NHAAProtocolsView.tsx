@@ -339,7 +339,7 @@ export function NHAAProtocolsView() {
         <div className="p-3.5 rounded-lg bg-[#FFFBEB] border border-[#FDE68A] flex items-start gap-3">
           <Info className="w-5 h-5 text-[#D97706] shrink-0 mt-0.5" />
           <div className="text-xs text-[#92400E] leading-relaxed">
-            <strong className="font-bold">Important Decision Support Notice:</strong> SAATHI-AI provides decision support only; it does not diagnose or make autonomous legal/medical decisions. Helpline operators retain 100% final decision authority and operational responsibility for case dispatches, grievance logging, and emergency escalations.
+            <strong className="font-bold">Important Decision Support Notice:</strong> Aasra AI provides decision support only; it does not diagnose or make autonomous legal/medical decisions. Helpline operators retain 100% final decision authority and operational responsibility for case dispatches, grievance logging, and emergency escalations.
           </div>
         </div>
 

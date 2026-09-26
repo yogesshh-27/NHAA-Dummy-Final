@@ -62,7 +62,7 @@ class AnalyzeRequest(BaseModel):
     answers: Optional[Dict[str, Any]] = {}
     acoustics: Optional[Dict[str, Any]] = None
 
-SAATHI_SYSTEM_PROMPT = """You are SAATHI-AI, the official intelligent assistant and decision-support companion for the National Helpline Against Atrocities (NHAA - 14566), Ministry of Social Justice and Empowerment, Government of India.
+SAATHI_SYSTEM_PROMPT = """You are Aasra AI, the official intelligent assistant and decision-support companion for the National Helpline Against Atrocities (NHAA - 14566), Ministry of Social Justice and Empowerment, Government of India.
 
 Your core mission is to empower citizens, victims, helpline operators, and nodal officers with compassionate, highly articulate, reassuring, and legally sound guidance.
 
@@ -358,7 +358,7 @@ Return JSON:
     "has_safety_concern": {str(any(w in req.user_message.lower() for w in ['threat', 'dhamki', 'danger', 'attack'])).lower()},
     "support_recommended": true,
     "content_indicators": ["vulnerability_verbalized"],
-    "summary": "Conversational assessment conducted by SAATHI-AI with empathy."
+    "summary": "Conversational assessment conducted by Aasra AI with empathy."
   }}
 }}
 Return ONLY valid JSON.
@@ -556,7 +556,7 @@ def _get_instant_assistant_reply(user_msg: str, ctx: Optional[CaseContext]) -> s
         )
 
     if any(w in msg for w in ["hi", "hello", "namaste", "hey", "hlo", "hii", "helo"]) and len(msg.split()) <= 3:
-        return "Namaste! 🙏✨ Main aapka AI Counselor aur SAATHI Companion hoon. Aap mujhse koi bhi sawal pooch sakte hain—suraksha, helpline numbers (112 / 14566), ya tension dur karne ke upaay! 🌟"
+        return "Namaste! 🙏✨ Main aapka AI Counselor aur Aasra AI Companion hoon. Aap mujhse koi bhi sawal pooch sakte hain—suraksha, helpline numbers (112 / 14566), ya tension dur karne ke upaay! 🌟"
 
     if any(w in msg for w in ["toll", "number", "helpline", "phone", "contact", "call police", "emergency number", "dial"]):
         return (

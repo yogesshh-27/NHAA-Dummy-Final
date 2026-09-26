@@ -255,7 +255,7 @@ export function RegisterGrievanceView({ onBack, onSuccess }: RegisterGrievanceVi
           {isAiAnalyzing && (
             <div className="p-3 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center gap-2 text-xs text-[#16A34A] animate-pulse">
               <Sparkles className="w-4 h-4" />
-              <span>SAATHI-AI analyzing narrative for legal PoA sections...</span>
+              <span>Aasra AI analyzing narrative for legal PoA sections...</span>
             </div>
           )}
 
@@ -263,7 +263,7 @@ export function RegisterGrievanceView({ onBack, onSuccess }: RegisterGrievanceVi
             <div className="p-3 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] space-y-1.5 animate-in fade-in">
               <div className="flex items-center gap-1.5 text-xs font-bold text-[#1E40AF]">
                 <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
-                <span>SAATHI-AI Auto-Tagged Legal Sections:</span>
+                <span>Aasra AI Auto-Tagged Legal Sections:</span>
               </div>
               <ul className="space-y-1 text-[11px] text-[#334155]">
                 {aiSuggestedSections.map((sec, idx) => (

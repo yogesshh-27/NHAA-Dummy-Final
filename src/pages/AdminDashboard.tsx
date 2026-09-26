@@ -621,7 +621,7 @@ export const AdminDashboard: React.FC = () => {
             }`}
           >
             <Brain className="w-4 h-4 text-purple-600" />
-            <span>SAATHI-AI Live Intake Console</span>
+            <span>Aasra AI Live Intake Console</span>
             <span className="text-[10px] bg-purple-100 text-purple-800 border border-purple-300 px-1.5 py-0.2 rounded font-bold tracking-wide">
               Live Engine
             </span>
@@ -1223,7 +1223,7 @@ export const AdminDashboard: React.FC = () => {
                   className="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-purple-700 hover:bg-purple-800 text-white text-xs font-semibold shadow-xs transition-colors"
                 >
                   <Brain className="w-3.5 h-3.5" />
-                  <span>Launch SAATHI-AI Console</span>
+                  <span>Launch Aasra AI Console</span>
                 </button>
                 <button
                   type="button"

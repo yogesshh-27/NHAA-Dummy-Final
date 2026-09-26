@@ -37,7 +37,7 @@ export function HelpFaqView({ onBack }: HelpFaqViewProps) {
       a: "Navigate to 'Track Status' in the navigation bar and enter your Grievance URN (e.g. NHAA-2026-GRV-49210) along with your registered mobile number to see real-time updates from the investigating officer, DSP, and Nodal Cell.",
     },
     {
-      q: "What is the SAATHI-AI SVI Score?",
+      q: "What is the Aasra AI SVI Score?",
       a: "The Severity & Vulnerability Index (SVI) is an explainable AI score calculated from vocal stress, distress keywords, physical threat levels, and social isolation signals to help helpline operators and nodal officers prioritize critical cases without human bias.",
     },
   ];

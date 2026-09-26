@@ -146,7 +146,7 @@ export const SaathiConsole: React.FC<SaathiConsoleProps> = ({
           <div>
             <div className="flex items-center gap-2.5 flex-wrap">
               <h2 className="text-lg font-bold text-white tracking-tight">
-                SAATHI-AI Real-Time Helpline Decision-Support System
+                Aasra AI Real-Time Helpline Decision-Support System
               </h2>
               <span className="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded font-mono font-bold uppercase">
                 {backendStatus}
@@ -186,7 +186,7 @@ export const SaathiConsole: React.FC<SaathiConsoleProps> = ({
         </div>
       </div>
 
-      {/* Navigation Sub-Tabs matching SAATHI-AI System */}
+      {/* Navigation Sub-Tabs matching Aasra AI System */}
       <div className="bg-white border border-slate-300 rounded-xl p-2 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
         <div className="flex items-center gap-1.5 overflow-x-auto">
           <button

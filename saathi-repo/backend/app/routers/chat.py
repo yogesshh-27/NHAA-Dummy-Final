@@ -39,7 +39,7 @@ class ChatRequest(BaseModel):
     history: Optional[List[ChatMessage]] = []
     case_context: Optional[CaseContext] = None
 
-SAATHI_SYSTEM_PROMPT = """You are SAATHI-AI Assistant, a smart, helpful, ChatGPT/Gemini-style AI companion and decision-support assistant for the SAATHI-AI Emergency Helpline platform (SIH26093).
+SAATHI_SYSTEM_PROMPT = """You are Aasra AI Assistant, a smart, helpful, ChatGPT/Gemini-style AI companion and decision-support assistant for the Aasra AI Emergency Helpline platform (SIH26093).
 You assist both citizens (users) and helpline operators.
 
 PROJECT CONTEXT & SYSTEM OVERVIEW:

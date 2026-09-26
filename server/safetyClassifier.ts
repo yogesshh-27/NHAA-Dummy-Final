@@ -1,4 +1,4 @@
-// Saathi AI safety classifier — Node-side wrapper around the Python sidecar.
+// Aasra AI safety classifier — Node-side wrapper around the Python sidecar.
 //
 // The trained scikit-learn model lives in backend/saathi_model/safety_model.pkl.
 // We boot a tiny Python HTTP sidecar (safety_model_server.py) that loads the
